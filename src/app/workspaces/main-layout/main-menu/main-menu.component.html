@@ -1,0 +1,14 @@
+<div class="nav-bar">
+
+  <ul>
+
+    <li *empNgHasPermission="routes.regulatory_processes.permission">
+      <a [routerLink]='getUrlFromRoutePath(routes.regulatory_processes.path)' routerLinkActive='selected'
+        [routerLinkActiveOptions]="{exact:false}">
+        {{ getMenuTitleFromLayoutType('RegulatoryTrees') }}
+      </a>
+    </li>
+
+  </ul>
+
+</div>

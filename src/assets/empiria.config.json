@@ -1,0 +1,15 @@
+{
+  "appName": "Empiria Compliance Web Application",
+  "version": "1.0.0-alpha.0",
+  "date": "2022-03-15",
+  "settings": [
+    {
+      "key": "APPLICATION_KEY",
+      "value": "compliance"
+    },
+    {
+      "key": "HTTP_API_BASE_ADDRESS",
+      "value": "http://compliance/api/"
+    }
+  ]
+}

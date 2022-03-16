@@ -1,0 +1,74 @@
+<div class="outer">
+
+  <div class="authentication-container">
+
+      <div class="authentication-center">
+
+        <div class="authentication-section-logo">
+          <img class="logo" src="assets/img/customer/logo-horizontal.png" alt="Talanza"/>
+        </div>
+
+
+        <div class="authentication-section-welcome">
+          <strong>REGULATORY COMPLIANCE</strong>
+          <div class="hint">OIL & GAS REGTECH SOLUTION</div>
+        </div>
+
+
+        <div class="authentication-section-form">
+
+          <form autocomplete="off" [formGroup]="form">
+
+            <label for="userID">Username:</label>
+            <div class="login-field-container">
+              <input type="text" class="text-box" id="userID" autocomplete="username" autofocus
+                formControlName="userID"
+                [class.invalid-control]="form.get('userID').invalid && form.get('userID').touched">
+            </div>
+
+            <label for="password">Password:</label>
+            <div class="login-field-container">
+              <input [type]="showPassword ? 'text' : 'password'" class="text-box"
+                id="password" autocomplete="current-password"
+                formControlName="password"
+                [class.invalid-control]="form.get('password').invalid && form.get('password').touched">
+              <mat-icon class="input-icon" *ngIf="showPasswordModeSelected === 'icon'"
+                (click)="toggleShowPassword()">
+                {{showPassword ? 'visibility_off' : 'visibility'}}
+              </mat-icon>
+            </div>
+
+            <div *ngIf="exceptionMsg" class="inline-error">
+              {{exceptionMsg}}
+            </div>
+
+            <div class="footer-submit-container">
+              <mat-checkbox *ngIf="showPasswordModeSelected === 'check'"
+                [checked]="showPassword"
+                (click)="$event.stopPropagation"
+                (change)="toggleShowPassword()"
+                class="mat-checkbox-login">
+                Show password
+              </mat-checkbox>
+
+              <div></div>
+
+              <button type="sumbit"
+                [class.btn]="form.invalid"
+                [class.btn-secondary]="form.valid"
+                [class.spinner]="submitted"
+                [style.marginRight.px]="8"
+                (click)="login()">
+                Log In
+              </button>
+            </div>
+
+          </form>
+
+        </div>
+
+      </div>
+
+  </div>
+
+</div>

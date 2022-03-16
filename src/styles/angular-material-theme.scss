@@ -1,0 +1,58 @@
+/**
+ * @license
+ * Copyright (c) La Vía Óntica SC, Ontica LLC and contributors. All rights reserved.
+ *
+ * See LICENSE.txt in the project root for complete license information.
+ */
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+
+@import '~@angular/material/theming';
+
+// variables
+
+$primary-font-family: "Montserrat, sans-serif" !default;
+
+$empiria-compliance-ui-typography: mat.define-typography-config(
+  $font-family: $primary-font-family,
+  $headline: mat.define-typography-level(24pt, 34pt, 400),
+  $title: mat.define-typography-level(14pt, 20pt, 500),
+  $body-1: mat.define-typography-level(9.5pt, 16pt, 400),
+  $body-2: mat.define-typography-level(10pt, 14pt, 500),
+  $caption: mat.define-typography-level(9pt, 12pt, 400),
+  $button: mat.define-typography-level(10pt, 14pt, 400),
+  $input: mat.define-typography-level(10.5pt, 1.25, 400)
+);
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core($empiria-compliance-ui-typography);
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$empiria-compliance-ui-primary: mat.define-palette(mat.$gray-palette, 500);
+$empiria-compliance-ui-accent: mat.define-palette(mat.$teal-palette, 300, 200, 500);
+
+// The warn palette is optional (defaults to red).
+$empiria-compliance-ui-warn: mat.define-palette(mat.$red-palette, 500);
+
+// Create the theme object. A theme consists of configurations for individual
+$empiria-compliance-ui-theme: mat.define-light-theme((
+  color: (
+    primary: $empiria-compliance-ui-primary,
+    accent: $empiria-compliance-ui-accent,
+    warn: $empiria-compliance-ui-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($empiria-compliance-ui-theme);
+
+// Apply custom typography to all angular material components.
+@include mat.all-component-typographies($empiria-compliance-ui-typography);
