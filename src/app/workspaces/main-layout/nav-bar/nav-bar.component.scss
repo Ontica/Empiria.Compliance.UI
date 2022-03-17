@@ -8,6 +8,7 @@
 
 
 $margin-size: 16px;
+$margin-size-border: 36px;
 $margin-size-small: 8px;
 
 .nav-bar {
@@ -26,12 +27,12 @@ $margin-size-small: 8px;
     width: auto;
     align-items: center;
     white-space: nowrap;
-    margin: 0 $margin-size + 20px;
+    margin: 0 $margin-size 0 $margin-size-border;
   }
 
   .right-section {
-    min-width: 225px;
-    margin: 0 $margin-size;
+    min-width: 115px;
+    margin: 0 $margin-size-border 0 $margin-size;
   }
 
   .search-and-settings {

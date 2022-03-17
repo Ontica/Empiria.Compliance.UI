@@ -1,10 +1,71 @@
+<div class="container" *ngIf="!displayMenuUser">
 
-<div class="container">
-
-  <div class="user-name"> {{principal.identity ? principal.identity.name : ''}}
-
+  <div class="user-name">
+    {{principal.identity ? principal.identity.name : ''}}
   </div>
 
   <a class="logout" [routerLink]="['/security/login']">Cerrar sesión</a>
 
 </div>
+
+
+<ng-container *ngIf="displayMenuUser">
+
+  <button [matMenuTriggerFor]="menu" #t="matMenuTrigger" aria-label="User"
+    class="toolbar-item"
+    [ngClass]="{'activate': t.menuOpen}">
+
+    <mat-icon>person</mat-icon>
+
+  </button>
+
+
+  <mat-menu #menu="matMenu" [yPosition]>
+
+    <div class="menu-user-name-info" (click)="$event.stopPropagation();$event.preventDefault();">
+
+      <span>{{principal.identity ? principal.identity.name : ''}}</span>
+      <span class="tag-info tag-small" *ngIf="principal.identity">
+        {{principal.identity.role ?? 'User'}}
+      </span>
+
+    </div>
+
+
+    <mat-divider></mat-divider>
+
+
+    <button mat-menu-item fxLayoutAlign="space-between center" *ngIf="displayChangeLanguage"
+      (click)="$event.stopPropagation();$event.preventDefault();">
+
+      <span>Language</span>
+
+      <mat-button-toggle-group appearance="legacy" class="menu-user-toggle">
+
+        <mat-button-toggle value="eng" checked>Eng</mat-button-toggle>
+        <mat-button-toggle value="spa">Spa</mat-button-toggle>
+
+      </mat-button-toggle-group>
+
+    </button>
+
+
+    <button mat-menu-item *ngIf="displayChangePassword">
+
+      <span>Change password</span>
+
+    </button>
+
+
+    <mat-divider *ngIf="displayChangeLanguage || displayChangePassword"></mat-divider>
+
+
+    <button mat-menu-item [routerLink]="['/security/login']">
+
+      <span>Log out</span>
+
+    </button>
+
+  </mat-menu>
+
+</ng-container>

@@ -69,7 +69,7 @@ export class MainLayoutComponent implements OnDestroy {
 
 
   onAction(action: string) {
-
+    console.log(action);
   }
 
 }

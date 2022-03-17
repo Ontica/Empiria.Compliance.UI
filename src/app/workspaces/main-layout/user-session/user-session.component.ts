@@ -21,6 +21,12 @@ export class UserSessionComponent implements OnInit {
 
   principal: Principal = Principal.empty;
 
+  displayMenuUser = true;
+
+  displayChangeLanguage = true;
+
+  displayChangePassword = true;
+
   constructor(private session: SessionService) {}
 
   ngOnInit(): void {
