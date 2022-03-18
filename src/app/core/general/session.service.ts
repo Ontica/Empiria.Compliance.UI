@@ -21,7 +21,7 @@ import { Claim, Identity, SessionToken } from '../security/security-types';
 
 import { LocalStorageService } from './local-storage.service';
 
-import { ROUTES_LIST } from '@app/workspaces/main-layout/config-data';
+import { ROUTES_LIST } from '@app/main-layout';
 
 
 @Injectable()

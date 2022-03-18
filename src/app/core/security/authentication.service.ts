@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 import { DEFAULT_ROUTE, DEFAULT_URL, getAllPermissions, ROUTES_LIST,
-         UNAUTHORIZED_ROUTE } from '@app/workspaces/main-layout/config-data';
+         UNAUTHORIZED_ROUTE } from '@app/main-layout';
 
 import { Assertion } from '../general/assertion';
 

@@ -15,6 +15,7 @@ import { AngularFlexLayoutModule } from '@app/shared/angular-flex-layout.module'
 import { SharedDirectivesModule } from '@app/shared/directives/shared-directives.module';
 import { SharedFormControlsModule } from '@app/shared/form-controls/shared-form-controls.module';
 import { SharedIndicatorsModule } from '@app/shared/indicators/shared-indicators.module';
+import { ToolsModule } from '@app/views/tools/tools.module';
 
 import { MainLayoutComponent } from './main-layout.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
@@ -25,7 +26,6 @@ import { NoContentComponent } from './no-content.component';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { TopBarComponent } from './top-bar/top-bar.component';
 import { UserSessionComponent } from './user-session/user-session.component';
-import { ToolsModule } from '@app/views/tools/tools.module';
 
 
 @NgModule({

@@ -5,13 +5,14 @@
  * See LICENSE.txt in the project root for complete license information.
  */
 
-import { Component, EventEmitter,
-         Output, OnDestroy, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnDestroy, OnInit } from '@angular/core';
+
 import { Subscription } from 'rxjs';
 
 import { PresentationState } from '@app/core/presentation';
 
 import { MenuItem, NavigationHeader } from '../common-models';
+
 import { MainUIStateSelector } from '@app/core/presentation/presentation-types';
 
 

@@ -11,10 +11,8 @@ import { Assertion, Exception, SessionService } from '@app/core';
 
 import { AbstractPresentationHandler, StateValues } from '@app/core/presentation/presentation.handler';
 
-import { NavigationHeader, DefaultNavigationHeader, buildNavigationHeader, Layout, View,
-         DefaultView } from '@app/workspaces/main-layout/common-models';
-
-import { APP_LAYOUTS, APP_VIEWS, TOOL, TOOLS_LIST } from '@app/workspaces/main-layout/config-data';
+import { NavigationHeader, DefaultNavigationHeader, buildNavigationHeader, Layout, View, DefaultView,
+         APP_LAYOUTS, TOOL, TOOLS_LIST, APP_VIEWS} from '@app/main-layout';
 
 
 export enum ActionType {
