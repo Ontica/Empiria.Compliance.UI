@@ -39,8 +39,7 @@ export class UserLoginComponent implements OnInit {
               private router: Router) { }
 
   ngOnInit() {
-    this.authenticationService.logout()
-        .then((x: boolean) => this.reloadPage(x));
+    this.logout();
   }
 
   toggleShowPassword() {
@@ -68,10 +67,10 @@ export class UserLoginComponent implements OnInit {
   }
 
 
-  private reloadPage(mustReload: boolean) {
-    if (mustReload) {
-      window.location.reload();
-    }
+  private logout() {
+    this.submitted = true;
+    this.authenticationService.logout()
+      .finally(() => this.submitted = false);
   }
 
 }

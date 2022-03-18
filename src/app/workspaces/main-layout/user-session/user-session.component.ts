@@ -7,7 +7,9 @@
 
 import { Component, OnInit } from '@angular/core';
 
-import { SessionService } from '@app/core';
+import { Router } from '@angular/router';
+
+import { AuthenticationService, SessionService } from '@app/core';
 
 import { Principal } from '@app/core/security/principal';
 
@@ -27,10 +29,18 @@ export class UserSessionComponent implements OnInit {
 
   displayChangePassword = true;
 
-  constructor(private session: SessionService) {}
+  constructor(private session: SessionService,
+              private authenticationService: AuthenticationService,
+              private router: Router) {}
 
   ngOnInit(): void {
     this.principal = this.session.getPrincipal();
+  }
+
+
+  logout() {
+    this.authenticationService.logout()
+      .finally(() => this.router.navigateByUrl('security/login'));
   }
 
 }
