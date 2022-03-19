@@ -11,9 +11,9 @@ import { Subscription } from 'rxjs';
 
 import { PresentationState } from '@app/core/presentation';
 
-import { MainUIStateSelector } from '@app/core/presentation/presentation-types';
+import { MainUIStateAction, MainUIStateSelector } from '@app/core/presentation/presentation-types';
 
-import { MenuItem, NavigationHeader } from '../common-models';
+import { MenuItem, NavigationHeader, ViewAction } from '../common-models';
 
 import { APP_CONFIG } from '../config-data';
 
@@ -50,6 +50,11 @@ export class NavigationHeaderComponent implements OnInit, OnDestroy {
 
   onClickMenu(menuItem: MenuItem) {
     this.action.emit(menuItem.action);
+  }
+
+
+  onActionButtonClicked(action: ViewAction) {
+    this.state.dispatch(MainUIStateAction.SET_VIEW_ACTION, action);
   }
 
 }

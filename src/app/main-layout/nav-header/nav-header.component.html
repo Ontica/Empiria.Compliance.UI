@@ -16,4 +16,12 @@
       {{navigationHeader.title ? ' - ' + navigationHeader.title : ''}}
     </div>
   </div>
+
+  <div class="action-buttons">
+    <button class="btn-header" *ngFor="let action of navigationHeader.actions"
+      (click)="onActionButtonClicked(action)">
+      {{action.name}}
+      <mat-icon *ngIf="action.icon">{{action.icon}}</mat-icon>
+    </button>
+  </div>
 </div>

@@ -12,11 +12,12 @@ import { Assertion, Exception, SessionService } from '@app/core';
 import { AbstractPresentationHandler, StateValues } from '@app/core/presentation/presentation.handler';
 
 import { NavigationHeader, DefaultNavigationHeader, buildNavigationHeader, Layout, View, DefaultView,
-         APP_LAYOUTS, TOOL, TOOLS_LIST, APP_VIEWS} from '@app/main-layout';
+         APP_LAYOUTS, TOOL, TOOLS_LIST, APP_VIEWS, ViewActionType} from '@app/main-layout';
 
 
 export enum ActionType {
   SET_CURRENT_VIEW_FROM_URL = 'Empiria.UI-Item.MainUserInterface.SetCurrentViewFromUrl',
+  SET_VIEW_ACTION = 'Empiria.UI-Item.MainUserInterface.SetViewAction',
   SET_IS_PROCESSING_FLAG    = 'Empiria.UI-Item.MainUserInterface.SetIsProcessingFlag',
   SET_TOOL_SELECTED         = 'Empiria.UI-Item.MainUserInterface.SetToolSelected',
 }
@@ -26,6 +27,7 @@ export enum SelectorType {
   LAYOUT              = 'Empiria.UI-Item.MainUserInterface.Layout',
   NAVIGATION_HEADER   = 'Empiria.UI-Item.MainUserInterface.NavigationHeader',
   CURRENT_VIEW        = 'Empiria.UI-Item.MainUserInterface.CurrentView',
+  VIEW_ACTION   = 'Empiria.UI-Item.MainUserInterface.ViewAction',
   IS_PROCESSING       = 'Empiria.UI-Item.MainUserInterface.IsProcessing',
   TOOL_SELECTED       = 'Empiria.UI-Item.MainUserInterface.ToolSelected',
 }
@@ -35,6 +37,7 @@ export interface MainLayoutState {
   readonly layout: Layout;
   readonly navigationHeader: NavigationHeader;
   readonly currentView: View;
+  readonly viewActionSelected: ViewActionType;
   readonly isProcessing: boolean;
   readonly toolSelected: TOOL;
 }
@@ -44,6 +47,7 @@ const initialState: StateValues = [
   { key: SelectorType.LAYOUT, value: APP_LAYOUTS[0] },
   { key: SelectorType.NAVIGATION_HEADER, value: DefaultNavigationHeader },
   { key: SelectorType.CURRENT_VIEW, value: DefaultView },
+  { key: SelectorType.VIEW_ACTION, value: 'None' },
   { key: SelectorType.IS_PROCESSING, value: false },
   { key: SelectorType.TOOL_SELECTED, value: 'None' },
 ];
@@ -66,6 +70,7 @@ export class MainLayoutPresentationHandler extends AbstractPresentationHandler {
       layout: this.getValue(SelectorType.LAYOUT),
       navigationHeader: this.getValue(SelectorType.NAVIGATION_HEADER),
       currentView: this.getValue(SelectorType.CURRENT_VIEW),
+      viewActionSelected: this.getValue(SelectorType.VIEW_ACTION),
       isProcessing: this.getValue(SelectorType.IS_PROCESSING),
       toolSelected: this.getValue(SelectorType.TOOL_SELECTED),
     };
@@ -85,6 +90,12 @@ export class MainLayoutPresentationHandler extends AbstractPresentationHandler {
         Assertion.assertValue(payload.url, 'payload.url');
 
         this.setCurrentViewFromUrl(payload.url);
+        return;
+
+      case ActionType.SET_VIEW_ACTION:
+        Assertion.assertValue(payload.action, 'payload.action');
+
+        this.setValue(SelectorType.VIEW_ACTION, payload.action);
         return;
 
       case ActionType.SET_TOOL_SELECTED:
@@ -140,13 +151,12 @@ export class MainLayoutPresentationHandler extends AbstractPresentationHandler {
   }
 
 
-
   private setNavigationHeader(value: NavigationHeader | View) {
     if (value && 'url' in value) {
       const layout = APP_LAYOUTS.find(x => x.name === this.state.layout.name);
 
       const navHeader = !layout ? null :
-        buildNavigationHeader(layout, this.session.getPrincipal().permissions, value.title);
+        buildNavigationHeader(layout, this.session.getPrincipal().permissions, value);
 
       this.setValue(SelectorType.NAVIGATION_HEADER, navHeader);
 

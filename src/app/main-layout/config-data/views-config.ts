@@ -18,6 +18,9 @@ export const ProcessesViews: View[] = [
     title: 'Obligations Tree',
     url: ROUTES_LIBRARY.regulatory_processes_obligations_tree.fullpath,
     permission: ROUTES_LIBRARY.regulatory_processes_obligations_tree.permission,
+    actions: [
+      {action: 'ActionFilter', name: 'Filters', icon: 'filter_list'}
+    ]
   },
 ];
 

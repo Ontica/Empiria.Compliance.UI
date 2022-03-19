@@ -18,6 +18,9 @@ export interface Layout {
 }
 
 
+export type ViewActionType = 'None' | 'ActionFilter' | 'ActionCreate' | 'ActionExport';
+
+
 export interface View {
   name: string;
   title: string;
@@ -25,6 +28,14 @@ export interface View {
   menuTitle?: string;
   disabled?: boolean;
   permission?: string;
+  actions?: ViewAction[];
+}
+
+
+export interface ViewAction {
+  action: ViewActionType;
+  name: string;
+  icon?: string;
 }
 
 

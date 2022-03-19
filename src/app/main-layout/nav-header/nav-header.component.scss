@@ -83,22 +83,27 @@ a:hover {
   font-size: 10pt;
 }
 
+.action-buttons {
+  display: flex;
+}
+
 button.btn-header {
   @include input-button-settings;
 
   text-transform: none;
   background-color: rgba($secondary-color, 25%);
   color: $white;
-  min-width: $button-height;
+  min-width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: 36px;
+  margin-right: 16px;
   height: 40px;
   border-radius: 3px;
 
   .mat-icon {
     color: $white;
+    padding-left: 8px;
   }
 }
 
