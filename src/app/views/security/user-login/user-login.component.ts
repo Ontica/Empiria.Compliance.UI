@@ -13,6 +13,8 @@ import { Router } from '@angular/router';
 
 import { AuthenticationService } from '@app/core';
 
+import { APP_CONFIG } from '@app/main-layout';
+
 type ShowPasswordMode = 'icon' | 'check';
 
 @Component({
@@ -21,6 +23,8 @@ type ShowPasswordMode = 'icon' | 'check';
   styleUrls: ['./user-login.component.scss'],
 })
 export class UserLoginComponent implements OnInit {
+
+  appLayoutData = APP_CONFIG.data;
 
   showPasswordModeSelected: ShowPasswordMode = 'check';
 

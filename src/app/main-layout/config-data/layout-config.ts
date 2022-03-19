@@ -7,10 +7,9 @@
 
 import { View, Layout } from '../common-models/common';
 
-import {
-  ProcessesViews,
-  UnauthorizedViews
-} from './views.config';
+import { ROUTES_LIBRARY } from './permissions-config';
+
+import { ProcessesViews, UnauthorizedViews } from './views-config';
 
 
 export const APP_VIEWS: View[] = ProcessesViews.concat(UnauthorizedViews);
@@ -21,12 +20,15 @@ export const APP_LAYOUTS: Layout[] = [
     name: 'RegulatoryTrees',
     views: ProcessesViews,
     hint: 'Regulatory Trees',
-    defaultTitle: 'Regulatory Trees'
+    defaultTitle: 'Regulatory Trees',
+    url: ROUTES_LIBRARY.regulatory_processes.fullpath,
+    permission: ROUTES_LIBRARY.regulatory_processes.permission,
   },
   {
     name: 'Unauthorized',
     views: UnauthorizedViews,
     hint: '',
-    defaultTitle: ''
+    defaultTitle: '401: Unauthorized',
+    url: ROUTES_LIBRARY.unauthorized.fullpath,
   },
 ];

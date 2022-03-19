@@ -11,13 +11,15 @@ import { Subscription } from 'rxjs';
 
 import { PresentationState } from '@app/core/presentation';
 
+import { MainUIStateSelector } from '@app/core/presentation/presentation-types';
+
 import { MenuItem, NavigationHeader } from '../common-models';
 
-import { MainUIStateSelector } from '@app/core/presentation/presentation-types';
+import { APP_CONFIG } from '../config-data';
 
 
 @Component({
-  selector: 'emp-ng-navigation-header',
+  selector: 'emp-ng-header',
   templateUrl: './nav-header.component.html',
   styleUrls: ['./nav-header.component.scss']
 })
@@ -28,6 +30,8 @@ export class NavigationHeaderComponent implements OnInit, OnDestroy {
   navigationHeader: NavigationHeader;
 
   private subscription: Subscription;
+
+  appLayoutConfig = APP_CONFIG.layout;
 
   constructor(protected state: PresentationState) { }
 

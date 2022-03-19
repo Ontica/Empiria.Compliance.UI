@@ -13,6 +13,8 @@ export interface Layout {
   views: View[];
   hint: string;
   defaultTitle: string;
+  url: string;
+  permission?: string;
 }
 
 
@@ -31,3 +33,27 @@ export const DefaultView: View = {
   title: 'Default view',
   url: '/',
 };
+
+export interface AppData {
+  name: string;
+  organization: string;
+  hint: string;
+  description: string;
+}
+
+
+export interface AppLayout {
+  displayMenuUser: boolean;
+  displayChangeLanguage: boolean;
+  displayChangePassword: boolean;
+  displayAsideLeft: boolean;
+  displaySubMenu: boolean;
+  displayHeader: boolean;
+  displayFooter: boolean;
+}
+
+
+export interface AppConfig {
+  data: AppData;
+  layout: AppLayout;
+}

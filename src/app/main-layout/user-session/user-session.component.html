@@ -1,4 +1,4 @@
-<div class="container" *ngIf="!displayMenuUser">
+<div class="container" *ngIf="!appLayoutConfig.displayMenuUser">
 
   <div class="user-name">
     {{principal.identity ? principal.identity.name : ''}}
@@ -9,7 +9,7 @@
 </div>
 
 
-<ng-container *ngIf="displayMenuUser">
+<ng-container *ngIf="appLayoutConfig.displayMenuUser">
 
   <button [matMenuTriggerFor]="menu" #t="matMenuTrigger"
     class="toolbar-item" [ngClass]="{'activate': t.menuOpen}">
@@ -32,7 +32,7 @@
 
     </mat-divider>
 
-    <button mat-menu-item fxLayoutAlign="space-between center" *ngIf="displayChangeLanguage"
+    <button mat-menu-item fxLayoutAlign="space-between center" *ngIf="appLayoutConfig.displayChangeLanguage"
       (click)="$event.stopPropagation();$event.preventDefault();">
 
       Language
@@ -43,9 +43,11 @@
 
     </button>
 
-    <button mat-menu-item *ngIf="displayChangePassword"> Change password </button>
+    <button mat-menu-item *ngIf="appLayoutConfig.displayChangePassword"> Change password </button>
 
-    <mat-divider *ngIf="displayChangeLanguage || displayChangePassword"></mat-divider>
+    <mat-divider *ngIf="appLayoutConfig.displayChangeLanguage || appLayoutConfig.displayChangePassword">
+
+    </mat-divider>
 
     <button mat-menu-item (click)="logout()"> Log out </button>
 

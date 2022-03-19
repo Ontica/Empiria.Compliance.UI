@@ -7,7 +7,7 @@
 
 
 
-import { ROUTES_LIBRARY } from '../config-data';
+import { ROUTES_LIBRARY } from '.';
 
 import { View } from '../common-models/common';
 

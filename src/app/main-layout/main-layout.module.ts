@@ -17,6 +17,7 @@ import { SharedFormControlsModule } from '@app/shared/form-controls/shared-form-
 import { SharedIndicatorsModule } from '@app/shared/indicators/shared-indicators.module';
 import { ToolsModule } from '@app/views/tools/tools.module';
 
+import { FooterComponent } from './footer/footer.component';
 import { MainLayoutComponent } from './main-layout.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { NavBarComponent } from './nav-bar/nav-bar.component';
@@ -45,6 +46,7 @@ import { UserSessionComponent } from './user-session/user-session.component';
   ],
 
   declarations: [
+    FooterComponent,
     MainLayoutComponent,
     MainMenuComponent,
     NavBarComponent,

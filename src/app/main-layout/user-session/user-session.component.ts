@@ -13,6 +13,8 @@ import { AuthenticationService, SessionService } from '@app/core';
 
 import { Principal } from '@app/core/security/principal';
 
+import { APP_CONFIG } from '../config-data';
+
 
 @Component({
   selector: 'emp-ng-user-session',
@@ -23,11 +25,8 @@ export class UserSessionComponent implements OnInit {
 
   principal: Principal = Principal.empty;
 
-  displayMenuUser = true;
+  appLayoutConfig = APP_CONFIG.layout;
 
-  displayChangeLanguage = true;
-
-  displayChangePassword = true;
 
   constructor(private session: SessionService,
               private authenticationService: AuthenticationService,
