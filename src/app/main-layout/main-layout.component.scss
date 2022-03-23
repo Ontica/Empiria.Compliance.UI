@@ -40,6 +40,8 @@ $margin-size-small: 8px;
 
 .workarea {
   @include expand;
+
+  height: calc(100vh - 212px);
 }
 
 .sidenav-left {

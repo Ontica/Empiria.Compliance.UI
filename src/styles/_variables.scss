@@ -42,7 +42,7 @@ $action-selected-color: $primary-color-dark;
 //
 // Typography
 //
-$font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family: "Poppins", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-secondary: "Inconsolata", monospace !default;
 $font-size-root: 8pt !default;
 $font-size-base: 1rem !default;
@@ -128,7 +128,7 @@ $checkbox-background-color: #38927d;
 //
 // grid
 //
-$grid-header-background-color: #f5efe7 !default;
+$grid-header-background-color: $secondary-color-light !default;
 $grid-footer-background-color: $disabled-color;
 $grid-border: 0;
 $grid-even-background-color: $white;

@@ -26,13 +26,18 @@
   font-size: 12pt;
   font-weight: 600;
   min-width: 160px;
+  max-width: calc(100% - 150px);
   text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
 
   .breadcrumb {
     color: $white;
     font-size: $font-size-hint;
     font-weight: 400;
     text-transform: uppercase;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .breadcrumb-divider {

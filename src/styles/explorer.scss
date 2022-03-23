@@ -17,8 +17,12 @@
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
-  margin: 8px;
-  height: calc(100vh - 132px);
+  padding: 8px;
+  height: 100%;
+
+  > :not(:last-child) {
+    margin-right: 32px
+  }
 
   .primary {
     flex: 1 1 600px;
