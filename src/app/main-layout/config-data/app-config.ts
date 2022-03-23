@@ -16,12 +16,13 @@ export const APP_CONFIG: AppConfig = {
     description: 'Regulatory Compliance Solution for the Oil & Gas Industry',
   },
   layout: {
+    enablePermissions: false,
     displayMenuUser: true,
     displayChangeLanguage: true,
     displayChangePassword: true,
     displayAsideLeft: false,
     displaySubMenu: false,
     displayHeader: true,
-    displayFooter: false,
+    displayFooter: true,
   }
 };

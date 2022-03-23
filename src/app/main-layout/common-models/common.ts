@@ -54,6 +54,7 @@ export interface AppData {
 
 
 export interface AppLayout {
+  enablePermissions: boolean;
   displayMenuUser: boolean;
   displayChangeLanguage: boolean;
   displayChangePassword: boolean;

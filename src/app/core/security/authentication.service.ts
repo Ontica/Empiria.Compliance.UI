@@ -7,9 +7,7 @@
 
 import { Injectable } from '@angular/core';
 
-import { environment } from 'src/environments/environment';
-
-import { DEFAULT_ROUTE, DEFAULT_URL, getAllPermissions, ROUTES_LIST,
+import { APP_CONFIG, DEFAULT_ROUTE, DEFAULT_URL, getAllPermissions, ROUTES_LIST,
          UNAUTHORIZED_ROUTE } from '@app/main-layout';
 
 import { Assertion } from '../general/assertion';
@@ -66,7 +64,7 @@ export class AuthenticationService {
 
 
   private setSession(sessionToken: SessionToken, principalData: PrincipalData){
-    if (!environment.enablePermissions) {
+    if (!APP_CONFIG.layout.enablePermissions) {
       principalData.permissions = getAllPermissions();
     }
 
