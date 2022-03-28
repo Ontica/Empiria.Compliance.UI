@@ -10,7 +10,6 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { MessageBoxService } from '@app/shared/containers/message-box';
-import { firstValueFrom } from 'rxjs';
 
 
 @Injectable()
@@ -62,7 +61,8 @@ export class ErrorMessageService {
 
   private handle401Error() {
     if (!this.messageBox.isOpen()) {
-      firstValueFrom(this.messageBox.showError('Su sesión ha expirado, inicie sesión de nuevo para continuar.'))
+      this.messageBox.showError('Su sesión ha expirado, inicie sesión de nuevo para continuar.')
+        .toPromise()
         .then(x => this.router.navigateByUrl('security/login'));
     }
   }

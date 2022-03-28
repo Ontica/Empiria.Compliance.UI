@@ -16,7 +16,6 @@ import { Assertion } from '../general/assertion';
 import { HttpHandler } from '../http/http-handler';
 
 import { SessionToken, PrincipalData } from './security-types';
-import { firstValueFrom } from 'rxjs';
 
 
 interface ExternalSessionToken {
@@ -35,12 +34,14 @@ export class SecurityDataService {
   changePassword(event: EventInfo): Promise<boolean> {
     Assertion.assertValue(event, 'event');
 
-    return firstValueFrom(this.httpHandler.post<boolean>('v3/security/change-password', event));
+    return this.httpHandler.post<boolean>('v3/security/change-password', event)
+                           .toPromise();
   }
 
 
   closeSession(): Promise<void> {
-    return firstValueFrom(this.httpHandler.post<void>('v3/security/logout'));
+    return this.httpHandler.post<void>('v3/security/logout')
+               .toPromise();
   }
 
 
@@ -50,18 +51,21 @@ export class SecurityDataService {
       password: ''
     };
 
-    const token = await firstValueFrom(this.httpHandler.post<string>('v3/security/login-token', body));
+    const token = await this.httpHandler.post<string>('v3/security/login-token', body)
+                                        .toPromise();
 
     body.password = Cryptography.createHash(userPassword);
     body.password = Cryptography.createHash(body.password + token);
 
-    return firstValueFrom(this.httpHandler.post<ExternalSessionToken>('v3/security/login', body))
+    return this.httpHandler.post<ExternalSessionToken>('v3/security/login', body)
+      .toPromise()
       .then(x => this.mapToSessionToken(x));
   }
 
 
   getPrincipal(): Promise<PrincipalData> {
-    return firstValueFrom(this.httpHandler.get<PrincipalData>('v3/security/principal'));
+    return this.httpHandler.get<PrincipalData>('v3/security/principal')
+      .toPromise();
   }
 
 

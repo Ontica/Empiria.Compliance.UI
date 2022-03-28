@@ -5,7 +5,7 @@
  * See LICENSE.txt in the project root for complete license information.
  */
 
-import { Observable, BehaviorSubject, firstValueFrom } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 
 import { Assertion } from '../general/assertion';
 
@@ -126,7 +126,7 @@ export abstract class AbstractPresentationHandler implements PresentationHandler
 
     cache.set(key, subject);
 
-    firstValueFrom(funct())
+    funct().toPromise()
       .then(x => {
         subject.next(x);
         return x;
@@ -183,7 +183,7 @@ export abstract class AbstractPresentationHandler implements PresentationHandler
     const stateItem = this.getStateMapItem(selector);
 
     if (value instanceof Observable) {
-      return firstValueFrom(value)
+      return value.toPromise<U>()
         .then(x => {
           stateItem.next(x);
           return x;
