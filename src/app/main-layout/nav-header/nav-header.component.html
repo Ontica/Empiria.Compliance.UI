@@ -10,11 +10,14 @@
 <div class="header" *ngIf="appLayoutConfig.displayHeader">
   <div class="title">
     {{navigationHeader.title}}
-    <div class="breadcrumb" *ngIf="navigationHeader.hint">
-      <span class="breadcrumb-divider">|</span>
-      {{navigationHeader.hint}}
-      {{navigationHeader.title ? ' - ' + navigationHeader.title : ''}}
-    </div>
+
+    <ng-container *ngIf="navigationHeader.hint">
+      <div class="breadcrumb-divider">|</div>
+      <div class="breadcrumb">
+        {{navigationHeader.hint}}
+        {{navigationHeader.title ? ' - ' + navigationHeader.title : ''}}
+      </div>
+    </ng-container>
   </div>
 
   <div class="action-buttons">
