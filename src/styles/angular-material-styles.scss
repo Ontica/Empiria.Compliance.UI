@@ -794,7 +794,7 @@ table.mat-table.emp-designer {
   &.mat-checkbox-checked,
   &.mat-checkbox-indeterminate {
     .mat-checkbox-background {
-      background-color: $warning-color !important;
+      background-color: $layout-secondary-color !important;
     }
   }
 
@@ -860,7 +860,7 @@ table.mat-table.emp-designer {
 }
 
 .mat-checkbox.mat-checkbox-login .mat-checkbox-ripple > .mat-ripple-element {
-  background: $warning-color !important;
+  background: $layout-secondary-color !important;
 }
 
 //

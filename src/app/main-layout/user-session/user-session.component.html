@@ -19,13 +19,11 @@
 
   <mat-menu #menu="matMenu" [yPosition]>
 
-    <div class="menu-user-name-info" (click)="$event.stopPropagation();$event.preventDefault();">
-
-      <span>{{principal.identity ? principal.identity.name : ''}}</span>
-      <span class="tag-info tag-small" *ngIf="principal.identity">
-        {{principal.identity.role ?? 'User'}}
+    <div class="menu-user-info-container"  (click)="$event.stopPropagation();$event.preventDefault();">
+      <span class="menu-user-name">{{principal.identity ? principal.identity.name : ''}}</span>
+      <span class="tag-info tag-small" [style.marginRight]="0" *ngIf="principal.identity" >
+        {{principal.roles.length > 0 ? principal.roles[0] : 'User'}}
       </span>
-
     </div>
 
     <mat-divider>

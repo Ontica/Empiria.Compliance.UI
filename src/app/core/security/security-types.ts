@@ -22,7 +22,6 @@ export interface Identity {
   readonly email: string;
   readonly fullname: string;
   readonly name: string;
-  readonly role: string;
 }
 
 
