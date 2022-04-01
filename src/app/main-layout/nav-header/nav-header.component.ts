@@ -35,6 +35,7 @@ export class NavigationHeaderComponent implements OnInit, OnDestroy {
 
   constructor(protected state: PresentationState) { }
 
+
   ngOnInit() {
     this.subscription = this.state.select<NavigationHeader>(MainUIStateSelector.NAVIGATION_HEADER)
       .subscribe (
@@ -42,11 +43,13 @@ export class NavigationHeaderComponent implements OnInit, OnDestroy {
       );
   }
 
+
   ngOnDestroy() {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
   }
+
 
   onClickMenu(menuItem: MenuItem) {
     this.action.emit(menuItem.action);

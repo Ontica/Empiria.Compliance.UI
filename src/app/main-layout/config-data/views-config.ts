@@ -7,7 +7,7 @@
 
 
 
-import { ROUTES_LIBRARY } from '.';
+import { PermissionsLibrary as Permissions, ROUTES_LIBRARY } from './permissions-config';
 
 import { View } from '../common-models/common';
 
@@ -19,7 +19,7 @@ export const ProcessesViews: View[] = [
     url: ROUTES_LIBRARY.regulatory_processes_obligations_tree.fullpath,
     permission: ROUTES_LIBRARY.regulatory_processes_obligations_tree.permission,
     actions: [
-      {action: 'ActionFilter', name: 'Filters', icon: 'filter_list'}
+      {action: 'ActionFilter', name: 'Filters', icon: 'filter_list', permission: Permissions.ALL}
     ]
   },
 ];
