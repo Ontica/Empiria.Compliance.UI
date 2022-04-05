@@ -189,8 +189,8 @@ table.mat-table {
     padding: 12px 15px 12px 0;
 
     &.mat-header-cell {
-      border-bottom: 2pt solid $title-color;
-      font-size: $font-size-grid-header;
+      border-bottom: $grid-header-border-bottom;
+      font-size: $grid-header-font-size;
       font-family: $font-family;
     }
 
@@ -220,7 +220,7 @@ table.mat-table {
   td {
     vertical-align: top;
     padding: 8px 15px 8px 0;
-    font-size: $font-size-grid;
+    font-size: $grid-font-size;
 
     .mat-icon-button {
       width: 24px;
@@ -279,7 +279,7 @@ table.mat-table {
       height: 30px;
 
       th {
-        color: $primary-color;
+        color: $grid-header-color;
         font-weight: 700;
       }
 
@@ -462,7 +462,7 @@ table.mat-table.emp-designer {
       border: none;
       color: $control-color;
       font: $control-font;
-      font-size: $font-size-grid;
+      font-size: $grid-font-size;
       font-weight: normal;
       width: 100%;
     }
@@ -780,17 +780,10 @@ table.mat-table.emp-designer {
       }
     }
   }
-
-  &:not(.mat-checkbox-login) .mat-checkbox-inner-container {
-    margin-top: -4px;
-  }
-
-  &.mat-checkbox-no-form .mat-checkbox-inner-container {
-    margin-top: 0;
-  }
 }
 
 .mat-checkbox.mat-checkbox-login {
+
   &.mat-checkbox-checked,
   &.mat-checkbox-indeterminate {
     .mat-checkbox-background {

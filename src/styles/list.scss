@@ -8,13 +8,13 @@
 @import "general-styles";
 
 $box-shadow: 0 3px 1px -2px rgba(44, 57, 66, 0.1),
-  0 2px 2px 0 rgba(44, 57, 66, 0.07), 0 1px 5px 0 rgba(44, 57, 66, 0.05);
+0 2px 2px 0 rgba(44, 57, 66, 0.07), 0 1px 5px 0 rgba(44, 57, 66, 0.05);
 
 .list-header {
   @include row;
 
   justify-content: space-between;
-  font-size: $font-size-grid-header;
+  font-size: $grid-header-font-size;
   font-weight: 700;
   background-color: $grid-header-background-color;
   color: $primary-color;
@@ -48,7 +48,7 @@ $box-shadow: 0 3px 1px -2px rgba(44, 57, 66, 0.1),
   border-bottom: 1px $border-color solid;
   min-height: 32px;
   padding: 8px;
-  font-size: $font-size-grid;
+  font-size: $grid-font-size;
 }
 
 .list-item:hover {
@@ -206,7 +206,7 @@ $border-shadow-width: 5px;
   font-family: $font-family-secondary;
   padding: 0;
   width: 100%;
-  font-size: $font-size-grid;
+  font-size: $grid-font-size;
   background: rgba($primary-color, 25%); //#d5e9e4
 }
 

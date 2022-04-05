@@ -33,21 +33,21 @@
     <button mat-menu-item fxLayoutAlign="space-between center" *ngIf="appLayoutConfig.displayChangeLanguage"
       (click)="$event.stopPropagation();$event.preventDefault();">
 
-      Language
+      Idioma
       <mat-button-toggle-group appearance="legacy" class="menu-user-toggle">
-        <mat-button-toggle value="eng" checked>Eng</mat-button-toggle>
-        <mat-button-toggle value="spa">Spa</mat-button-toggle>
+        <mat-button-toggle value="en">Ing</mat-button-toggle>
+        <mat-button-toggle value="sp" checked>Esp</mat-button-toggle>
       </mat-button-toggle-group>
 
     </button>
 
-    <button mat-menu-item *ngIf="appLayoutConfig.displayChangePassword"> Change password </button>
+    <button mat-menu-item *ngIf="appLayoutConfig.displayChangePassword"> Cambiar contraseña </button>
 
     <mat-divider *ngIf="appLayoutConfig.displayChangeLanguage || appLayoutConfig.displayChangePassword">
 
     </mat-divider>
 
-    <button mat-menu-item (click)="logout()"> Log out </button>
+    <button mat-menu-item (click)="logout()"> Cerrar sesión </button>
 
   </mat-menu>
 

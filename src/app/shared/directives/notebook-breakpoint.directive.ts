@@ -9,9 +9,9 @@ import { Directive } from '@angular/core';
 
 import { ShowHideDirective } from '@angular/flex-layout';
 
-const selector = `[fxHide.xs.notebook]`;
+const selector = `[fxHide.notebook]`;
 
-const inputs = ['fxHide.xs.notebook'];
+const inputs = ['fxHide.notebook'];
 
 @Directive({selector, inputs})
 export class BreakpointDirective extends ShowHideDirective {

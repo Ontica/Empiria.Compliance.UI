@@ -1,14 +1,11 @@
 <div class="toolbar-container">
 
-  <!-- <div class="search-and-settings">
+  <emp-ng-search-box (searchBoxChange)="onSearchClicked($event)">
 
-    <emp-ng-search-box (searchBoxChange)="onSearchClicked($event)">
+  </emp-ng-search-box>
 
-    </emp-ng-search-box>
 
-  </div> -->
-
-  <!-- <button *empNgHasPermission="permissions.ALL"
+  <button *empNgHasPermission="permissions.ALL"
     class="toolbar-item"
     title="Alerts"
     [ngClass]="{'activate': toolSelected === 'Alerts'}"
@@ -16,6 +13,6 @@
 
     <mat-icon>notifications</mat-icon>
 
-  </button> -->
+  </button>
 
 </div>

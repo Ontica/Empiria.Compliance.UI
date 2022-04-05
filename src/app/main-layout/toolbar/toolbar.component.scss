@@ -11,15 +11,8 @@
   display: flex;
 }
 
-.search-and-settings {
-  @include row;
-
-  width: auto;
-  align-items: center;
-}
-
 @media only screen and (max-width: 1140px) {
-  .search-and-settings {
+  emp-ng-search-box {
     display: none;
   }
 }

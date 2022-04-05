@@ -7,18 +7,18 @@
 
 $white: #fdfdfd !default;
 
-$primary-color: #3dbab3 !default;
-$primary-color-light: #9bdfdb !default;
-$primary-color-dark: #347e7a !default;
+$primary-color: hsl(177, 51%, 48%) !default;
+$primary-color-light: hsl(177, 51%, 80%) !default;
+$primary-color-dark: hsl(177, 51%, 35%) !default;
 
-$secondary-color: #4d5055 !default;
-$secondary-color-light: #edeef0 !default;
-$secondary-color-semi-light: #929392 !default;
-$secondary-color-dark: #4d5055 !default;
+$secondary-color: hsl(217, 5%, 32%) !default;
+$secondary-color-light: hsl(225, 5%, 90%) !default;
+$secondary-color-semi-light: hsl(217, 5%, 65%) !default;
+$secondary-color-dark: hsl(217, 5%, 27%) !default;
 
-$warning-color: #e49a9a !default;
-$warning-color-light: $warning-color;
-$warning-color-dark: #d04f4f !default;
+$warning-color: hsl(357, 51%, 58%) !default;
+$warning-color-light: hsl(357, 51%, 68%);
+$warning-color-dark: hsl(357, 51%, 48%) !default;
 
 $title-color: $primary-color !default;
 
@@ -58,9 +58,6 @@ $font-size-hint: $font-size-base * 0.75;
 $font-weight-hint: 300;
 $text-bold: lighten($text-color, 3%);
 $text-italic: italic;
-//
-$font-size-grid-header: $font-size-base * 0.65;
-$font-size-grid: 9pt;
 
 //
 // Layout
@@ -133,19 +130,23 @@ $button-selected-color: #e6e6e6;
 $button-border: 0 solid #cecece;
 $button-height: 28px;
 
-$checkbox-background-color: #38927d;
+$checkbox-background-color: $primary-color;
 
 //
 // grid
 //
 $grid-header-background-color: $secondary-color-light !default;
-$grid-footer-background-color: $disabled-color;
+$grid-header-color: $primary-color !default;
+$grid-header-border-bottom: 2pt solid $title-color;
+$grid-header-font-size: $font-size-base * 0.7;
+$grid-font-size: 9pt;
 $grid-border: 0;
 $grid-even-background-color: $white;
 $grid-odd-background-color: #f4f4f4 !default;
-$grid-hover-background-color: #fafafa;
+$grid-hover-background-color: #f7fdfc;
 $grid-selected-background-color: #f7fcfb;
 $grid-selected-hover-background-color: #f3fcfb;
+$grid-footer-background-color: $disabled-color;
 
 //
 // Designer

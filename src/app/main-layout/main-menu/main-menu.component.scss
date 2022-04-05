@@ -13,10 +13,6 @@
   font-weight: 600;
 }
 
-.mat-menu-trigger.active a {
-  color: $primary-color;
-}
-
 .nav-bar {
   min-height: 28px;
 }
@@ -59,7 +55,10 @@
 
 .nav-bar li:hover a {
   color: $primary-color;
-  font-weight: 600;
+}
+
+.nav-bar li.active a {
+  color: $primary-color;
 }
 
 .nav-bar li.selected a {
