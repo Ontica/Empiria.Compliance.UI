@@ -1,0 +1,23 @@
+  <emp-ng-card [title]="obligation.name"
+    [hint]="hintText"
+    (cardClose)="onCloseClicked()">
+
+    <mat-tab-group >
+
+      <mat-tab label="Obligacion">
+
+        <emp-com-obligation-editor
+          [obligation]="obligation"
+          (oligationEditorEvent)="onOligationEditorEvent($event)">
+
+        </emp-com-obligation-editor>
+
+      </mat-tab>
+
+      <mat-tab label="Requisitos" disabled>
+
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </emp-ng-card>

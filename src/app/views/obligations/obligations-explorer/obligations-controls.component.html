@@ -1,0 +1,18 @@
+<div [style.margin]="'0 -16px'">
+
+  <mat-divider [style.marginTop.px]="8">
+
+  </mat-divider>
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" class="control-section-container">
+
+    <div fxFlex class="text-small-text"> {{hint}} </div>
+
+    <button fxFlex="none" class="btn"
+      (click)="onExportButtonClicked()">
+      Exportar
+    </button>
+
+  </div>
+
+</div>

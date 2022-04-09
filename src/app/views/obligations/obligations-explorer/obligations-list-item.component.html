@@ -1,0 +1,27 @@
+<div class="list-item" [class.list-item-selected]="isSelected">
+
+  <div fxLayout="column" class="list-item-container">
+
+    <div fxLayout="row" class="list-item-name">
+      <strong>
+        <a (click)="onObligationClicked()">{{obligation.name}}</a>
+      </strong>
+    </div>
+
+    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutGap.lt-sm="8px">
+
+      <div fxFlex="30%">
+        <div class="list-item-label">Tópicos:</div>
+        <div>{{obligation.topics}}</div>
+      </div>
+
+      <div fxFlex>
+        <div class="list-item-label">Reguladores:</div>
+        <div>{{obligation.regulator}}</div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

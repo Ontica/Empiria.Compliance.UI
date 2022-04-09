@@ -1,0 +1,14 @@
+<cdk-virtual-scroll-viewport itemSize="75">
+
+    <emp-com-obligations-list-item *cdkVirtualFor="let obligation of obligationsList"
+      [obligation]="obligation"
+      [isSelected]="isSelected(obligation)"
+      (obligationsListItemEvent)="onObligationsListItemEvent($event)">
+
+    </emp-com-obligations-list-item>
+
+    <div *ngIf="obligationsList.length === 0" class="text-not-found">
+      {{textNotFound}}
+    </div>
+
+</cdk-virtual-scroll-viewport>

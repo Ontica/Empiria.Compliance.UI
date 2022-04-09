@@ -1,0 +1,39 @@
+<div class="card card-border">
+
+  <div class="card-header card-header-flat" [style.paddingBottom]="0">
+
+    <div fxLayout="column" fxFlexFill>
+
+      <emp-ng-obligations-filter
+        (obligationsFilterEvent)="onObligationsFilterEvent($event)">
+
+      </emp-ng-obligations-filter>
+
+      <emp-com-obligations-controls
+        [hint]="hint"
+        [commandExecuted]="commandExecuted"
+        (obligationsControlsEvent)="onObligationsControlsEvent($event)">
+
+      </emp-com-obligations-controls>
+
+    </div>
+
+  </div>
+
+  <div class="card-body" [empNgSpinnerHost]="spinner">
+
+    <emp-ng-spinner #spinner [visible]="isLoading">
+
+    </emp-ng-spinner>
+
+    <emp-com-obligations-list
+      [obligationsList]="obligationsList"
+      [obligationSelected]="obligationSelected"
+      [textNotFound]="textNotFound"
+      (obligationsListEvent)="onObligationsListEvent($event)">
+
+    </emp-com-obligations-list>
+
+  </div>
+
+</div>

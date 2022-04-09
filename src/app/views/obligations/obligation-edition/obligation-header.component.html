@@ -1,0 +1,150 @@
+<form [formGroup]="formHandler.form" [empNgSpinnerHost]="spinner"
+  autocomplete="off" class="form-section" (keydown.enter)="$event.preventDefault()">
+
+  <emp-ng-spinner #spinner [visible]="isLoading"></emp-ng-spinner>
+
+  <div #fieldsSection fxLayout="column" fxLayoutGap="0.75rem" fxLayoutGap.lt-md="0.75rem">
+
+    <div class="section-title"> Información general de la obligación </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="100">
+        <label>Nombre:</label>
+        <input type="text" class="text-box"
+          [formControlName]="controls.name"
+          [class.invalid-control]="formHandler.showInvalidControl(controls.name)">
+      </div>
+
+    </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="100">
+        <label>Descripción:</label>
+        <textarea class="text-area" empNgTextareaAutoresize [maxHeightTextarea]="140" rows="1"
+          [formControlName]="controls.description"
+          [class.invalid-control]="formHandler.showInvalidControl(controls.description)">
+        </textarea>
+      </div>
+
+    </div>
+
+    <div class="section-title"> Información legal y regulatoria </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="50">
+        <label>Tópicos:</label>
+        <emp-ng-select
+          [config]="{multiple: true, bindByValue: false}"
+          [formControlName]="controls.topics"
+          [items]="topicsList"
+          [bindLabel]="null"
+          [showError]="formHandler.showInvalidControl(controls.topics)">
+        </emp-ng-select>
+      </div>
+
+      <div [fxFlex]="50">
+        <label>Reguladores:</label>
+        <emp-ng-select
+          [config]="{multiple: true}"
+          [formControlName]="controls.regulators"
+          [items]="regulatorsList"
+          [showError]="formHandler.showInvalidControl(controls.regulators)">
+        </emp-ng-select>
+      </div>
+
+    </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="100">
+        <label>Trámite asociado:</label>
+        <emp-ng-select
+          [formControlName]="controls.associatedProcedure"
+          [items]="associatedProcedures"
+          [showError]="formHandler.showInvalidControl(controls.associatedProcedure)">
+        </emp-ng-select>
+      </div>
+
+    </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="100">
+        <label>Fundamento legal:</label>
+        <textarea class="text-area" empNgTextareaAutoresize [maxHeightTextarea]="140" rows="1"
+          [formControlName]="controls.legalBasis"
+          [class.invalid-control]="formHandler.showInvalidControl(controls.legalBasis)">
+        </textarea>
+      </div>
+
+    </div>
+
+  </div>
+
+  <mat-divider class="horizontal"></mat-divider>
+
+  <div #footerSeccion fxLayout="row">
+
+    <ng-container *ngIf="!isSaved">
+
+      <div fxFlex fxLayoutAlign="end center">
+
+        <button (click)="onSubmitForm()"
+          [class.btn]="!formHandler.isValid"
+          [class.btn-action]="formHandler.isValid">
+          Agregar
+        </button>
+
+      </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="isSaved">
+
+      <div fxFlex fxLayoutAlign="start center" *ngIf="editionMode">
+
+        <button
+          type="button" class="btn-warning"
+          (click)="onDeleteButtonClicked()">
+          Eliminar
+        </button>
+
+      </div>
+
+      <div fxFlex fxLayoutAlign="end center">
+
+        <ng-container *ngIf="editionMode">
+
+          <button (click)="onSubmitForm()"
+            [class.btn]="!formHandler.isValid"
+            [class.btn-action]="formHandler.isValid">
+            Guardar
+          </button>
+
+          <button (click)="enableEditor(false)"
+            class="btn-base uppercase">
+            Descartar Cambios
+          </button>
+
+        </ng-container>
+
+        <ng-container *ngIf="!editionMode">
+
+          <button
+            class="btn-action"
+            (click)="enableEditor(true)">
+            Editar
+          </button>
+
+        </ng-container>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</form>

@@ -1,0 +1,73 @@
+<form #form="ngForm"  autocomplete="off" class="form-section"
+  [empNgSpinnerHost]="spinner" (keydown.enter)="$event.preventDefault()">
+
+  <emp-ng-spinner #spinner [visible]="isLoading"></emp-ng-spinner>
+
+  <div fxLayout="column" fxLayoutGap="0.5rem" fxLayoutGap.lt-sm="0.5rem">
+
+    <div fxLayout="row" fxLayout.lt-sm="column">
+
+      <div [fxFlex]="50" fxFlex.lt-sm="100">
+
+        <label>Tópicos:</label>
+
+        <emp-ng-select name="topics"
+          [config]="{multiple: true, bindByValue: false, clearable: true}"
+          [(ngModel)]="formData.topics"
+          [items]="topicsList"
+          [bindLabel]="null"
+          [loading]="isLoading"
+          [showError]="submitted && !isValidForm"
+          placeholder="Todos">
+        </emp-ng-select>
+
+      </div>
+
+      <div [fxFlex]="50" fxFlex.lt-sm="100">
+
+        <label>Reguladores:</label>
+
+        <emp-ng-select name="regulators"
+          [config]="{multiple: true, clearable: true}"
+          [(ngModel)]="formData.regulators"
+          [items]="regulatorsList"
+          [loading]="isLoading"
+          [showError]="submitted && !isValidForm"
+          placeholder="Todos">
+        </emp-ng-select>
+
+      </div>
+
+      <div fxLayout="row" fxLayout.lt-sm="row" fxFlex="none" fxFlex.lt-sm="100" [style.paddingTop.px]="11">
+
+        <div class="input-search-container" fxFlex="180px" fxFlex.lt-sm>
+
+          <input type="text" class="text-box" name="keywords" #keywords="ngModel"
+            placeholder="Buscar obligaciones..."
+            [(ngModel)]="formData.keywords"
+            [class.invalid-control]="submitted && !isValidForm"
+            (keyup.escape)="formData.keywords = ''"
+            (keyup.enter)="onSearchClicked()">
+
+        </div>
+
+        <div fxFlex="28px" fxFlex.lt-sm="36px" [style.paddingTop.px]="2">
+
+          <button title="Consultar obligaciones"
+            [class.btn-icon]="!isValidForm"
+            [class.btn-icon-action]="isValidForm"
+            (click)="onSearchClicked()">
+
+            <mat-icon>search</mat-icon>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</form>
