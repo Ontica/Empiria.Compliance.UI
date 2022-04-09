@@ -47,6 +47,13 @@ export const DefaultView: View = {
   url: '/',
 };
 
+
+export const DefaultViewAction: ViewAction = {
+  action: 'None',
+  name: 'None',
+}
+
+
 export interface AppData {
   name: string;
   organization: string;

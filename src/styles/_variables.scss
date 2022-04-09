@@ -7,8 +7,8 @@
 
 $white: #fdfdfd !default;
 
-$primary-color: hsl(177, 51%, 48%) !default;
-$primary-color-light: hsl(177, 51%, 80%) !default;
+$primary-color: hsl(177, 51%, 40%) !default;
+$primary-color-light: hsl(177, 51%, 85%) !default;
 $primary-color-dark: hsl(177, 51%, 35%) !default;
 
 $secondary-color: hsl(217, 5%, 32%) !default;
@@ -62,12 +62,15 @@ $text-italic: italic;
 //
 // Layout
 //
-$layout-gradient-initial-color: $primary-color-dark;
-$layout-gradient-final-color: $primary-color;
+$layout-gradient-initial-color: $primary-color;
+$layout-gradient-final-color: $primary-color-dark;
 $layout-secondary-color: $secondary-color;
 $layout-secondary-color-dark: $secondary-color-dark;
-$toolbar-item-size: 40px;
-$toolbar-icon-size: 35px;
+$toolbar-item-color: $secondary-color-semi-light;
+$toolbar-item-higlight-color: $primary-color;
+$toolbar-item-size: 35px;
+$toolbar-icon-size: 24px;
+$toolbar-item-background: #f4f6f6;
 
 //
 // Elements colors
@@ -102,8 +105,8 @@ $form-title-color: $border-color-dark;
 //
 $button-font: 9.5pt $font-family;
 
-$control-font: 9.5pt $font-family-secondary;
-$control-small-font: 8.5pt $font-family-secondary;
+$control-font: 10.5pt $font-family-secondary;
+$control-small-font: 10pt $font-family-secondary;
 
 $control-color: $secondary-color-dark;
 $control-label-color: $secondary-color-dark;
@@ -131,6 +134,12 @@ $button-border: 0 solid #cecece;
 $button-height: 28px;
 
 $checkbox-background-color: $primary-color;
+
+$select-multiple-background: rgba($primary-color-light, 0.5);
+$select-multiple-hover-background: rgba($primary-color-light, 0.7);
+$select-multiple-border: 1px solid $primary-color-dark;
+$select-font-size-small: 10pt;
+$select-font-size-xsmall: 9.5pt;
 
 //
 // grid

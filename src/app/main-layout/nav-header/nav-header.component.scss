@@ -8,10 +8,10 @@
 @import "../../../styles/general-styles";
 
 .header {
-  background: -prefix-linear-gradient(top, $layout-gradient-initial-color, $layout-gradient-final-color);
-  background: linear-gradient(to top, $layout-gradient-initial-color, $layout-gradient-final-color);
+  background: -prefix-linear-gradient(bottom, $layout-gradient-initial-color, $layout-gradient-final-color);
+  background: linear-gradient(to bottom, $layout-gradient-initial-color, $layout-gradient-final-color);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
-  min-height: 56px;
+  min-height: 50px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -122,6 +122,7 @@ button.btn-header:hover {
 }
 
 @media (max-width: 800px) {
+
   .breadcrumb,
   .breadcrumb-divider {
     display: none;

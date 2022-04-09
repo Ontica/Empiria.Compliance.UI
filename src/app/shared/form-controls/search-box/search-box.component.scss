@@ -11,6 +11,14 @@
   min-width: 210px;
   height: $toolbar-item-size;
   position: relative;
+
+  .mat-icon {
+    color: $toolbar-item-color;
+  }
+
+  .mat-icon:hover {
+    color: $toolbar-item-higlight-color;
+  }
 }
 
 .container input {
@@ -19,4 +27,15 @@
   height: $toolbar-item-size;
   margin-top: 0;
   margin-bottom: 0;
+  color: $text-color;
+  background-color: $toolbar-item-background;
+  border: none;
+
+  &::placeholder {
+    color: $toolbar-item-color;
+  }
+
+  &:focus {
+    box-shadow: 0 0 4px rgba($primary-color-dark, 0.2);
+  }
 }

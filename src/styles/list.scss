@@ -42,14 +42,16 @@ $box-shadow: 0 3px 1px -2px rgba(44, 57, 66, 0.1),
 .list-item {
   @include row;
 
-  margin: 3px;
   align-items: flex-start;
+  font-family: $font-family-secondary;
+  font-size: $grid-font-size;
   background-color: $grid-even-background-color;
   border-bottom: 1px $border-color solid;
   min-height: 32px;
-  padding: 8px;
-  font-size: $grid-font-size;
+  margin: 0;
+  padding: 16px 20px;
 }
+
 
 .list-item:hover {
   background: $grid-hover-background-color;
@@ -62,6 +64,8 @@ $box-shadow: 0 3px 1px -2px rgba(44, 57, 66, 0.1),
 .list-item-selected {
   background-color: $grid-selected-background-color;
   box-shadow: $box-shadow;
+  margin: 4px;
+  padding: 12px 16px;
 }
 
 .list-item-selected:hover {
@@ -111,10 +115,15 @@ $box-shadow: 0 3px 1px -2px rgba(44, 57, 66, 0.1),
   vertical-align: -webkit-baseline-middle;
   font-size: 10pt;
   color: $text-color-dark;
+  padding-bottom: 4px;
 
   a {
-    color: $primary-color-dark;
+    color: $text-color-dark;
   }
+}
+
+.list-item-label {
+  color: $primary-color-dark;
 }
 
 .list-item-text-highlight {
