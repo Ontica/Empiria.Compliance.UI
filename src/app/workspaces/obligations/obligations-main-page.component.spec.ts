@@ -7,22 +7,22 @@
 
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { ProcessTreeMainPageComponent } from './process-tree-main-page.component';
+import { ObligationsMainPageComponent } from './obligations-main-page.component';
 
 
-describe('ProcessTreeMainPageComponent', () => {
-  let component: ProcessTreeMainPageComponent;
-  let fixture: ComponentFixture<ProcessTreeMainPageComponent>;
+describe('ObligationsMainPageComponent', () => {
+  let component: ObligationsMainPageComponent;
+  let fixture: ComponentFixture<ObligationsMainPageComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ ProcessTreeMainPageComponent ]
+      declarations: [ ObligationsMainPageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ProcessTreeMainPageComponent);
+    fixture = TestBed.createComponent(ObligationsMainPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

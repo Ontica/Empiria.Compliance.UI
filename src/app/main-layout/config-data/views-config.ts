@@ -12,14 +12,14 @@ import { PermissionsLibrary as Permissions, ROUTES_LIBRARY } from './permissions
 import { View } from '../common-models/common';
 
 
-export const ProcessesViews: View[] = [
+export const ObligationsViews: View[] = [
   {
-    name: 'RegulatoryTreesViews.ObligationsTree',
-    title: 'Obligations Tree',
-    url: ROUTES_LIBRARY.regulatory_processes_obligations_tree.fullpath,
-    permission: ROUTES_LIBRARY.regulatory_processes_obligations_tree.permission,
+    name: 'ObligationsViews.ObligationsExplorer',
+    title: 'Explorador de Obligaciones',
+    url: ROUTES_LIBRARY.obligations_obligations_explorer.fullpath,
+    permission: ROUTES_LIBRARY.obligations_obligations_explorer.permission,
     actions: [
-      {action: 'ActionFilter', name: 'Filters', icon: 'filter_list', permission: Permissions.ALL}
+      {action: 'ActionCreate', name: 'Agregar', icon: 'add', permission: Permissions.ALL},
     ]
   },
 ];

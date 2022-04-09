@@ -15,11 +15,11 @@ export const ROUTES_LIBRARY = {
 
   // #region app-routing module
 
-  regulatory_processes: {
+  obligations: {
     permission: PermissionsLibrary.ALL,
     parent: '',
-    path: 'regulatory-processes',
-    fullpath: '/regulatory-processes',
+    path: 'obligaciones',
+    fullpath: '/obligaciones',
   },
 
   security: {
@@ -36,13 +36,13 @@ export const ROUTES_LIBRARY = {
 
   // #endregion
 
-  // #region regulatory-processes-routing module
+  // #region obligations-routing module
 
-  regulatory_processes_obligations_tree: {
+  obligations_obligations_explorer: {
     permission: PermissionsLibrary.ALL,
-    parent: 'regulatory-processes',
-    path: 'obligations-tree',
-    fullpath: '/regulatory-processes/obligations-tree'
+    parent: 'obligaciones',
+    path: 'explorador-de-obligaciones',
+    fullpath: '/obligaciones/explorador-de-obligaciones'
   },
 
   // #endregion
@@ -60,7 +60,7 @@ export const ROUTES_LIBRARY = {
 };
 
 
-export const DEFAULT_ROUTE = ROUTES_LIBRARY.regulatory_processes;
+export const DEFAULT_ROUTE = ROUTES_LIBRARY.obligations;
 
 
 export const DEFAULT_URL = ( DEFAULT_ROUTE.parent ? DEFAULT_ROUTE.parent + '/' : '' ) + DEFAULT_ROUTE.path;

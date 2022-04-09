@@ -11,11 +11,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AngularMaterialModule } from '@app/shared/angular-material.module';
 import { AngularFlexLayoutModule } from '@app/shared/angular-flex-layout.module';
-
 import { SharedModule } from '@app/shared/shared.module';
 
-import { ProcessesWorkspaceRoutingModule } from './processes-workspace-routing.module';
-import { ProcessTreeMainPageComponent } from './process-tree-main-page.component';
+import { ObligationsWorkspaceRoutingModule } from './obligations-workspace-routing.module';
+import { ObligationsMainPageComponent } from './obligations-main-page.component';
+import { ObligationsModule } from '@app/views/obligations/obligations.module';
 
 
 @NgModule({
@@ -24,16 +24,18 @@ import { ProcessTreeMainPageComponent } from './process-tree-main-page.component
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+
     AngularMaterialModule,
     AngularFlexLayoutModule,
     SharedModule,
 
-    ProcessesWorkspaceRoutingModule,
+    ObligationsWorkspaceRoutingModule,
+    ObligationsModule,
   ],
 
   declarations: [
-    ProcessTreeMainPageComponent,
+    ObligationsMainPageComponent,
   ]
 
 })
-export class ProcessesWorkspaceModule { }
+export class ObligationsWorkspaceModule { }

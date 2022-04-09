@@ -15,13 +15,13 @@ import { DEFAULT_URL, MainLayoutComponent, NoContentComponent, ROUTES_LIBRARY } 
 
 const routes: Routes = [
   {
-    data: { permission: ROUTES_LIBRARY.regulatory_processes.permission },
-    path: ROUTES_LIBRARY.regulatory_processes.path,
+    data: { permission: ROUTES_LIBRARY.obligations.permission },
+    path: ROUTES_LIBRARY.obligations.path,
     component: MainLayoutComponent,
     canActivate: [SecurityGuard],
     canActivateChild: [SecurityGuard],
-    loadChildren: () => import('./workspaces/processes/processes-workspace.module')
-                              .then((m) => m.ProcessesWorkspaceModule)
+    loadChildren: () => import('./workspaces/obligations/obligations-workspace.module')
+                              .then((m) => m.ObligationsWorkspaceModule)
   },
   {
     path: ROUTES_LIBRARY.unauthorized.path,

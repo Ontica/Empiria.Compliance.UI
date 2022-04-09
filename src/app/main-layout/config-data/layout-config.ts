@@ -9,20 +9,20 @@ import { View, Layout } from '../common-models/common';
 
 import { ROUTES_LIBRARY } from './permissions-config';
 
-import { ProcessesViews, UnauthorizedViews } from './views-config';
+import { ObligationsViews, UnauthorizedViews } from './views-config';
 
 
-export const APP_VIEWS: View[] = ProcessesViews.concat(UnauthorizedViews);
+export const APP_VIEWS: View[] = UnauthorizedViews.concat(ObligationsViews);
 
 
 export const APP_LAYOUTS: Layout[] = [
   {
-    name: 'RegulatoryTrees',
-    views: ProcessesViews,
-    hint: 'Regulatory Trees',
-    defaultTitle: 'Regulatory Trees',
-    url: ROUTES_LIBRARY.regulatory_processes.fullpath,
-    permission: ROUTES_LIBRARY.regulatory_processes.permission,
+    name: 'Obligations',
+    views: ObligationsViews,
+    hint: 'Obligaciones',
+    defaultTitle: 'Obligaciones',
+    url: ROUTES_LIBRARY.obligations.fullpath,
+    permission: ROUTES_LIBRARY.obligations.permission,
   },
   {
     name: 'Unauthorized',

@@ -1,0 +1,30 @@
+<emp-ng-spinner #spinner [visible]="isLoadingObligation">
+
+</emp-ng-spinner>
+
+<div class="explorer">
+
+  <div class="primary" [fxHide.notebook]="displayObligationTabbedView">
+
+    <emp-com-obligations-explorer
+      [obligationsList]="obligationsList"
+      [obligationSelected]="obligationSelected"
+      [commandExecuted]="commandExecuted"
+      [isLoading]="isLoading"
+      (obligationsExplorerEvent)="onObligationsExplorerEvent($event)">
+
+    </emp-com-obligations-explorer>
+
+  </div>
+
+  <div class="secondary" *ngIf="displayObligationTabbedView">
+
+    <emp-com-obligation-tabbed-view
+      [obligation]="obligationSelected"
+      (obligationTabbedViewEvent)="onObligationTabbedViewEvent($event)">
+
+    </emp-com-obligation-tabbed-view>
+
+  </div>
+
+</div>

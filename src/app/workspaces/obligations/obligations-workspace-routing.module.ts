@@ -11,18 +11,18 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ROUTES_LIBRARY } from '@app/main-layout';
 
-import { ProcessTreeMainPageComponent } from './process-tree-main-page.component';
+import { ObligationsMainPageComponent } from './obligations-main-page.component';
 
 
 const routes: Routes = [
   {
-    data: { permission: ROUTES_LIBRARY.regulatory_processes_obligations_tree.permission },
-    path: ROUTES_LIBRARY.regulatory_processes_obligations_tree.path,
-    component: ProcessTreeMainPageComponent,
+    data: { permission: ROUTES_LIBRARY.obligations_obligations_explorer.permission },
+    path: ROUTES_LIBRARY.obligations_obligations_explorer.path,
+    component: ObligationsMainPageComponent,
   },
   {
     path: '',
-    redirectTo: ROUTES_LIBRARY.regulatory_processes_obligations_tree.path,
+    redirectTo: ROUTES_LIBRARY.obligations_obligations_explorer.path,
     pathMatch: 'full',
   },
 ];
@@ -32,4 +32,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class ProcessesWorkspaceRoutingModule { }
+export class ObligationsWorkspaceRoutingModule { }

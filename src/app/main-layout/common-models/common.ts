@@ -5,7 +5,7 @@
  * See LICENSE.txt in the project root for complete license information.
  */
 
-export type LayoutType = 'RegulatoryTrees' | 'Library' | 'Unauthorized';
+export type LayoutType = 'Obligations' | 'Library' | 'Unauthorized';
 
 
 export interface Layout {
