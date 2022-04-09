@@ -22,7 +22,7 @@
 
       <div [fxFlex]="100">
         <label>Descripción:</label>
-        <textarea class="text-area" empNgTextareaAutoresize [maxHeightTextarea]="140" rows="1"
+        <textarea class="text-area" empNgTextareaAutoresize rows="1"
           [formControlName]="controls.description"
           [class.invalid-control]="formHandler.showInvalidControl(controls.description)">
         </textarea>
@@ -74,7 +74,7 @@
 
       <div [fxFlex]="100">
         <label>Fundamento legal:</label>
-        <textarea class="text-area" empNgTextareaAutoresize [maxHeightTextarea]="140" rows="1"
+        <textarea class="text-area" empNgTextareaAutoresize rows="1"
           [formControlName]="controls.legalBasis"
           [class.invalid-control]="formHandler.showInvalidControl(controls.legalBasis)">
         </textarea>
