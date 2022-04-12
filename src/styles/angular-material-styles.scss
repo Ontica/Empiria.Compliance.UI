@@ -550,6 +550,10 @@ table.mat-table.emp-designer {
     margin: 12px 8px 0 0;
     height: $control-height;
   }
+
+  &.section-divider {
+    border-color: $secondary-color-semi-light;
+  }
 }
 
 //

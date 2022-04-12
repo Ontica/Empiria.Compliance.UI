@@ -1,20 +1,14 @@
 <div class="card card-border">
 
-  <div class="card-header card-header-flat" [style.paddingBottom]="0">
+  <div class="card-header card-header-flat">
 
-    <div fxLayout="column" fxFlexFill>
-
-      <emp-ng-obligations-filter
-        (obligationsFilterEvent)="onObligationsFilterEvent($event)">
-
-      </emp-ng-obligations-filter>
-
-      <emp-com-obligations-controls
-        [hint]="hint"
-        [commandExecuted]="commandExecuted"
-        (obligationsControlsEvent)="onObligationsControlsEvent($event)">
-
-      </emp-com-obligations-controls>
+    <div class="card-title">
+      Explorador de obligaciones
+      <div class="card-hint" empNgProgressText
+           loadingText="Cargando obligaciones"
+           [finalText]="hint"
+           [isLoading]="isLoading">
+      </div>
 
     </div>
 
@@ -26,13 +20,29 @@
 
     </emp-ng-spinner>
 
-    <emp-com-obligations-list
-      [obligationsList]="obligationsList"
-      [obligationSelected]="obligationSelected"
-      [textNotFound]="textNotFound"
-      (obligationsListEvent)="onObligationsListEvent($event)">
+    <div fxLayout="column" fxFlexFill>
 
-    </emp-com-obligations-list>
+      <emp-ng-obligations-filter fxFlex="none"
+        (obligationsFilterEvent)="onObligationsFilterEvent($event)">
+
+      </emp-ng-obligations-filter>
+
+      <emp-com-obligations-controls fxFlex="none"
+        [hint]="hint"
+        [commandExecuted]="commandExecuted"
+        (obligationsControlsEvent)="onObligationsControlsEvent($event)">
+
+      </emp-com-obligations-controls>
+
+      <emp-com-obligations-list fxFlex
+        [obligationsList]="obligationsList"
+        [obligationSelected]="obligationSelected"
+        [textNotFound]="textNotFound"
+        (obligationsListEvent)="onObligationsListEvent($event)">
+
+      </emp-com-obligations-list>
+
+    </div>
 
   </div>
 

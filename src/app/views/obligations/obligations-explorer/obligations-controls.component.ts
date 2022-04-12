@@ -19,12 +19,9 @@ export enum ObligationsControlsEventType {
   selector: 'emp-com-obligations-controls',
   templateUrl: './obligations-controls.component.html',
   styles: [`
-    .mat-divider {
-      margin: 8px -16px 0 -16px;
-    }
-
     .control-section-container {
       height: 45px;
+      padding: 8px;
     }
   `],
 })
