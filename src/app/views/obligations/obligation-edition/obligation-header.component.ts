@@ -32,7 +32,7 @@ export enum ObligationHeaderEventType {
 enum ObligationHeaderFormControls {
   name = 'name',
   description = 'description',
-  regulators = 'regulators',
+  regulator = 'regulator',
   topics = 'topics',
   associatedProcedure = 'associatedProcedure',
   legalBasis = 'legalBasis',
@@ -75,7 +75,6 @@ export class ObligationHeaderComponent implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges() {
     this.enableEditor(false);
-    console.log(this.formHandler.form.value);
   }
 
 
@@ -150,7 +149,7 @@ export class ObligationHeaderComponent implements OnChanges, OnInit, OnDestroy {
       new FormGroup({
         name: new FormControl('', Validators.required),
         description: new FormControl('', Validators.required),
-        regulators: new FormControl('', Validators.required),
+        regulator: new FormControl('', Validators.required),
         topics: new FormControl('', Validators.required),
         legalBasis: new FormControl('', Validators.required),
         associatedProcedure: new FormControl(''), //, Validators.required
@@ -163,11 +162,22 @@ export class ObligationHeaderComponent implements OnChanges, OnInit, OnDestroy {
     this.formHandler.form.reset({
       name: this.obligation.name,
       description: this.obligation.description,
-      regulators: isEmpty(this.obligation.regulator) ? [] : [this.obligation.regulator.uid],
+      regulator: isEmpty(this.obligation.regulator) ? '' : this.obligation.regulator.uid,
       topics: this.obligation.topics ? [this.obligation.topics] : [],
       legalBasis: this.obligation.legalBasis || '',
-      associatedProcedure: '' ,// this.obligation.associatedProcedure || '',
+      associatedProcedure: isEmpty(this.obligation.procedure) ? '' : this.obligation.procedure.uid,
     });
+
+    this.setAssociatedProcedures();
+  }
+
+
+  private setAssociatedProcedures() {
+    if(isEmpty(this.obligation.procedure)) {
+      this.associatedProcedures = [];
+      return;
+    }
+    this.associatedProcedures = [this.obligation.procedure];
   }
 
 
@@ -180,7 +190,7 @@ export class ObligationHeaderComponent implements OnChanges, OnInit, OnDestroy {
     const data: any = {
       name: formModel.name ?? '',
       description: formModel.description ?? '',
-      regulators: formModel.regulators ?? '',
+      regulator: formModel.regulator ?? '',
       topics: formModel.topics ?? '',
       legalBasis: formModel.legalBasis ?? '',
       associatedProcedure: formModel.associatedProcedure ?? '',

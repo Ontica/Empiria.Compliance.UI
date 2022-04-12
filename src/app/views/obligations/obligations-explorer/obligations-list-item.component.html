@@ -10,14 +10,19 @@
 
     <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutGap="32px" fxLayoutGap.lt-sm="8px">
 
-      <div fxFlex="30%">
+      <div fxFlex="30">
         <div class="list-item-label">Tópicos:</div>
         <div>{{obligation.topics}}</div>
       </div>
 
       <div fxFlex>
-        <div class="list-item-label">Reguladores:</div>
+        <div class="list-item-label">Regulador:</div>
         <div>{{obligation.regulator}}</div>
+      </div>
+
+      <div fxFlex="30" *ngIf="!!obligation.procedureCode">
+        <div class="list-item-label">Trámite:</div>
+        <div>{{obligation.procedureCode}}</div>
       </div>
 
     </div>

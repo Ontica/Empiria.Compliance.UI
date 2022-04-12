@@ -46,12 +46,12 @@
       </div>
 
       <div [fxFlex]="50">
-        <label>Reguladores:</label>
+        <label>Regulador:</label>
         <emp-ng-select
-          [config]="{multiple: true}"
-          [formControlName]="controls.regulators"
+          [formControlName]="controls.regulator"
           [items]="regulatorsList"
-          [showError]="formHandler.showInvalidControl(controls.regulators)">
+          [placeholder]="editionMode ? 'Seleccionar' : 'No determinado'"
+          [showError]="formHandler.showInvalidControl(controls.regulator)">
         </emp-ng-select>
       </div>
 
@@ -64,7 +64,14 @@
         <emp-ng-select
           [formControlName]="controls.associatedProcedure"
           [items]="associatedProcedures"
+          [placeholder]="editionMode ? 'Seleccionar' : 'No determinado'"
           [showError]="formHandler.showInvalidControl(controls.associatedProcedure)">
+          <ng-template #labelTemplate let-item="item">
+            {{item.code ? item.code + ':' : ''}} {{item.name}}
+          </ng-template>
+          <ng-template #optionTemplate let-item="item">
+            {{item.code ? item.code + ':' : ''}} {{item.name}}
+          </ng-template>
         </emp-ng-select>
       </div>
 
@@ -84,7 +91,7 @@
 
   </div>
 
-  <mat-divider class="horizontal"></mat-divider>
+  <!-- <mat-divider class="horizontal"></mat-divider>
 
   <div #footerSeccion fxLayout="row">
 
@@ -145,6 +152,6 @@
 
     </ng-container>
 
-  </div>
+  </div> -->
 
 </form>

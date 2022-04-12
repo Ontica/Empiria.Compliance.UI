@@ -20,6 +20,7 @@ export interface ObligationDescriptor {
   name: string;
   topics: string;
   regulator: string;
+  procedureCode: string;
 }
 
 
@@ -62,4 +63,11 @@ export const EmptyObligation: Obligation = {
   legalBasis: '',
   regulator: Empty,
   procedure: EmptyProcedure,
+}
+
+
+export const EmptyObligationCommand: ObligationCommand = {
+  keywords: '',
+  topics: [],
+  regulators: [],
 }
