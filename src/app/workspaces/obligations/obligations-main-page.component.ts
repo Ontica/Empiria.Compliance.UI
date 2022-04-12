@@ -20,7 +20,8 @@ import { ObligationsDataService } from '@app/data-services';
 
 import { MessageBoxService } from '@app/shared/containers/message-box';
 
-import { EmptyObligation, Obligation, ObligationCommand, ObligationDescriptor } from '@app/models';
+import { EmptyObligation, EmptyObligationCommand, Obligation, ObligationCommand,
+         ObligationDescriptor } from '@app/models';
 
 import { ObligationsExplorerEventType } from '@app/views/obligations/obligations-explorer/obligations-explorer.component';
 
@@ -39,7 +40,7 @@ export class ObligationsMainPageComponent implements OnInit, OnDestroy {
 
   commandExecuted = false;
 
-  obligationsCommand: ObligationCommand = null;
+  obligationsCommand: ObligationCommand = Object.assign({}, EmptyObligationCommand);
 
   obligationsList: ObligationDescriptor[] = [];
 
@@ -61,6 +62,7 @@ export class ObligationsMainPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.suscribeToAction();
+    this.searchObligation(this.obligationsCommand);
   }
 
 

@@ -22,8 +22,8 @@ export const APP_CONFIG: AppConfig = {
     displayChangeLanguage: true,
     displayChangePassword: true,
     displayAsideLeft: false,
-    displaySubMenu: false,
-    displayHeader: true,
-    displayFooter: true,
+    displaySubMenu: true,
+    displayHeader: false,
+    displayFooter: false,
   }
 };

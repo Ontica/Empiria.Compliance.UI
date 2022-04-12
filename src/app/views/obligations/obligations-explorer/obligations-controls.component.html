@@ -1,18 +1,14 @@
-<div [style.margin]="'0 -16px'">
+<mat-divider>
 
-  <mat-divider [style.marginTop.px]="8">
+</mat-divider>
 
-  </mat-divider>
+<div fxLayout="row" fxLayoutAlign="space-between center" class="control-section-container">
 
-  <div fxLayout="row" fxLayoutAlign="space-between center" class="control-section-container">
+  <div fxFlex class="text-small-text"> {{hint}} </div>
 
-    <div fxFlex class="text-small-text"> {{hint}} </div>
-
-    <button fxFlex="none" class="btn"
-      (click)="onExportButtonClicked()">
-      Exportar
-    </button>
-
-  </div>
+  <!-- <button fxFlex="none" class="btn"
+    (click)="onExportButtonClicked()">
+    Exportar
+  </button> -->
 
 </div>

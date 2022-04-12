@@ -17,7 +17,6 @@
           [items]="topicsList"
           [bindLabel]="null"
           [loading]="isLoading"
-          [showError]="submitted && !isValidForm"
           placeholder="Todos">
         </emp-ng-select>
 
@@ -25,14 +24,13 @@
 
       <div [fxFlex]="50" fxFlex.lt-sm="100">
 
-        <label>Reguladores:</label>
+        <label>Regulador:</label>
 
         <emp-ng-select name="regulators"
           [config]="{multiple: true, clearable: true}"
           [(ngModel)]="formData.regulators"
           [items]="regulatorsList"
           [loading]="isLoading"
-          [showError]="submitted && !isValidForm"
           placeholder="Todos">
         </emp-ng-select>
 
@@ -45,7 +43,6 @@
           <input type="text" class="text-box" name="keywords" #keywords="ngModel"
             placeholder="Buscar obligaciones..."
             [(ngModel)]="formData.keywords"
-            [class.invalid-control]="submitted && !isValidForm"
             (keyup.escape)="formData.keywords = ''"
             (keyup.enter)="onSearchClicked()">
 
@@ -53,9 +50,7 @@
 
         <div fxFlex="28px" fxFlex.lt-sm="36px" [style.paddingTop.px]="2">
 
-          <button title="Consultar obligaciones"
-            [class.btn-icon]="!isValidForm"
-            [class.btn-icon-action]="isValidForm"
+          <button title="Consultar obligaciones" class="btn-icon-action"
             (click)="onSearchClicked()">
 
             <mat-icon>search</mat-icon>

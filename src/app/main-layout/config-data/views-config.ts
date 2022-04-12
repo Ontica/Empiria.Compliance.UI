@@ -18,9 +18,9 @@ export const ObligationsViews: View[] = [
     title: 'Explorador de Obligaciones',
     url: ROUTES_LIBRARY.obligations_obligations_explorer.fullpath,
     permission: ROUTES_LIBRARY.obligations_obligations_explorer.permission,
-    actions: [
-      {action: 'ActionCreate', name: 'Agregar', icon: 'add', permission: Permissions.ALL},
-    ]
+    // actions: [
+    //   {action: 'ActionCreate', name: 'Agregar', icon: 'add', permission: Permissions.ALL},
+    // ]
   },
 ];
 

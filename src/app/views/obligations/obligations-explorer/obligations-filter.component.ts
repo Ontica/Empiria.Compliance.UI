@@ -13,7 +13,7 @@ import { EventInfo, Identifiable } from '@app/core';
 
 import { PresentationLayer, SubscriptionHelper } from '@app/core/presentation';
 
-import { ObligationCommand } from '@app/models';
+import { EmptyObligationCommand, ObligationCommand } from '@app/models';
 
 import { ObligationsStateSelector } from '@app/presentation/exported.presentation.types';
 
@@ -37,11 +37,7 @@ export class ObligationsFilterComponent implements OnInit, OnDestroy  {
 
   submitted = false;
 
-  formData = {
-    keywords: '',
-    topics: [],
-    regulators: [],
-  };
+  formData: ObligationCommand = Object.assign({}, EmptyObligationCommand);
 
   topicsList: string[] = [];
 
@@ -62,16 +58,9 @@ export class ObligationsFilterComponent implements OnInit, OnDestroy  {
     this.helper.destroy();
   }
 
-  get isValidForm(): boolean {
-    return !!this.formData.keywords || this.formData.topics.length > 0 || this.formData.regulators.length > 0;
-  }
 
   onSearchClicked() {
     this.submitted = true;
-
-    if (!this.isValidForm) {
-      return;
-    }
 
     const payload = { command: this.getObligationCommand() };
 
