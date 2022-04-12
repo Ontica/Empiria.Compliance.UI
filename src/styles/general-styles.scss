@@ -272,7 +272,7 @@ input:focus {
 }
 
 input::placeholder {
-  color: $control-disabled-color;
+  color: $control-placeholder-color;
 }
 
 .input-search-container {
@@ -670,10 +670,4 @@ ul.info-list {
   color: #808080;
   font-size: 9pt;
   font-weight: 400;
-}
-
-// controls-section
-
-.control-section-container {
-  padding: 8px 16px;
 }

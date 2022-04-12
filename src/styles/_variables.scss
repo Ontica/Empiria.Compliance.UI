@@ -12,8 +12,8 @@ $primary-color-light: hsl(177, 51%, 85%) !default;
 $primary-color-dark: hsl(177, 51%, 35%) !default;
 
 $secondary-color: hsl(217, 5%, 32%) !default;
-$secondary-color-light: hsl(225, 5%, 90%) !default;
-$secondary-color-semi-light: hsl(217, 5%, 65%) !default;
+$secondary-color-light: hsl(217, 5%, 90%) !default;
+$secondary-color-semi-light: hsl(217, 5%, 52%) !default;
 $secondary-color-dark: hsl(217, 5%, 27%) !default;
 
 $warning-color: hsl(357, 51%, 58%) !default;
@@ -29,11 +29,11 @@ $text-color-dark: $secondary-color-dark !default;
 $background-color-work-area: #f4f6f6 !default;
 $background-color: $white !default;
 
-$border-color: #e8e8e8 !default;
-$border-color-light: #edeef0 !default;
-$border-color-dark: #909090 !default;
+$border-color: hsl(217, 5%, 82%) !default;
+$border-color-light: hsl(217, 5%, 89%) !default;
+$border-color-dark: hsl(217, 5%, 57%) !default;
 
-$disabled-color: #edeef0 !default;
+$disabled-color: hsl(217, 5%, 96%) !default;
 
 $secondary-text-color: $white !default;
 $action-color: $primary-color;
@@ -112,12 +112,13 @@ $control-color: $secondary-color-dark;
 $control-label-color: $secondary-color-dark;
 $control-background-color: #fdfdfd;
 $control-border: 1px solid #dfdfdf;
+$control-placeholder-color: #00000061;
 
 $selected-control-background-color: #fafafa;
 $selected-control-color: #343434;
 $selected-control-border: 1px solid #bababa;
 
-$control-disabled-background: #f6f6f6;
+$control-disabled-background: $disabled-color;
 $control-disabled-color: $secondary-color-semi-light;
 
 $control-width: calc(100% - 8px);
@@ -136,6 +137,7 @@ $button-height: 28px;
 $checkbox-background-color: $primary-color;
 
 $select-multiple-background: rgba($primary-color-light, 0.5);
+$select-multiple-disabled-background: rgba($primary-color-light, 0.25);
 $select-multiple-hover-background: rgba($primary-color-light, 0.7);
 $select-multiple-border: 1px solid $primary-color-dark;
 $select-font-size-small: 10pt;
