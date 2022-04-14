@@ -87,6 +87,7 @@ export class SelectBoxComponent implements OnInit, OnChanges, OnDestroy, Control
   @Input() bindLabel = 'name';
   @Input() bindValue = 'uid';
   @Input() placeholder = 'Seleccionar';
+  @Input() placeholderDisabled = 'No determinado';
 
   @Input() loading = false;
   @Input() typeahead: Subject<string>;

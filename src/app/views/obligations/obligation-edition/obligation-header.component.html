@@ -50,7 +50,6 @@
         <emp-ng-select
           [formControlName]="controls.regulator"
           [items]="regulatorsList"
-          [placeholder]="editionMode ? 'Seleccionar' : 'No determinado'"
           [showError]="formHandler.showInvalidControl(controls.regulator)">
         </emp-ng-select>
       </div>
@@ -64,7 +63,6 @@
         <emp-ng-select
           [formControlName]="controls.associatedProcedure"
           [items]="associatedProcedures"
-          [placeholder]="editionMode ? 'Seleccionar' : 'No determinado'"
           [showError]="formHandler.showInvalidControl(controls.associatedProcedure)">
           <ng-template #labelTemplate let-item="item">
             {{item.code ? item.code + ':' : ''}} {{item.name}}

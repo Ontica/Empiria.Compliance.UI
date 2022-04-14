@@ -3,7 +3,7 @@
   [disabled]="disabled"
   [items]="items"
   [loading]="loading"
-  [placeholder]="placeholder"
+  [placeholder]="disabled ? placeholderDisabled : placeholder"
   [typeahead]="typeahead"
   [addTag]="selectBoxConfig.addTag"
   [addTagText]="selectBoxConfig.addTagText"
