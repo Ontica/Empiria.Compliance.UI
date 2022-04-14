@@ -1,0 +1,36 @@
+
+<emp-com-obligation-rule-editor
+  [obligationRule]="obligationRuleDefault"
+  [isObligationRuleDefault]="true"
+  (obligationRuleEditorEvent)="onObligationRuleEditorEvent($event)">
+
+</emp-com-obligation-rule-editor>
+
+<emp-com-obligation-rules-table
+  [obligationRulesList]="additionalObligationRulesList"
+  (obligationRulesTableEvent)="onObligationRulesTableEvent($event)">
+
+</emp-com-obligation-rules-table>
+
+<emp-ng-modal-window *ngIf="displayObligationRuleEditor"
+  [config]="{width:  '760px'}">
+
+  <emp-ng-card
+    [title]="isObligationRuleSelectedNew ? 'Agregar regla' : 'Editar regla'"
+    hint='Información de la regla.'
+    (cardClose)="onCloseObligationRuleEditorEvent()">
+
+    <div class="card-body-padding">
+
+      <emp-com-obligation-rule-editor
+        [obligationRule]="obligationRuleSelected"
+        [isObligationRuleDefault]="false"
+        (obligationRuleEditorEvent)="onObligationRuleEditorEvent($event)">
+
+      </emp-com-obligation-rule-editor>
+
+    </div>
+
+  </emp-ng-card>
+
+</emp-ng-modal-window>

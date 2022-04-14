@@ -4,13 +4,22 @@
 
     <mat-tab-group >
 
-      <mat-tab label="Obligacion">
+      <mat-tab label="Obligación">
 
         <emp-com-obligation-editor
           [obligation]="obligation"
           (oligationEditorEvent)="onOligationEditorEvent($event)">
 
         </emp-com-obligation-editor>
+
+      </mat-tab>
+
+      <mat-tab label="Reglas">
+
+        <emp-com-obligation-rules-edition
+          [obligationRuleList]="obligation.rules ?? []">
+
+        </emp-com-obligation-rules-edition>
 
       </mat-tab>
 

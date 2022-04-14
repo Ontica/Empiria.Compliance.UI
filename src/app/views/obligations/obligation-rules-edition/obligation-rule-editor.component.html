@@ -1,0 +1,334 @@
+<form [formGroup]="formHandler.form" autocomplete="off" class="form-section"
+  (keydown.enter)="$event.preventDefault()">
+
+  <div fxLayout="column" fxLayoutGap="0.75rem" fxLayoutGap.lt-md="0.75rem">
+
+    <ng-container #generalFields *ngIf="isObligationRuleDefault">
+
+      <div class="section-title"> Datos de configuración general </div>
+
+      <div fxLayout="row" fxLayout.lt-md="column">
+
+        <div [fxFlex]="20" fxFlex.lt-md="100">
+          <label>Modo de ejecución:</label>
+          <emp-ng-select [style.width.%]="100"
+            [config]="{bindByValue: false}"
+            [formControlName]="controls.executionMode"
+            [items]="[]">
+          </emp-ng-select>
+        </div>
+
+        <div [fxFlex]="30" fxFlex.lt-md="100" fxLayoutAlign="space-between center"
+          [style.paddingTop.px]="10" [style.height.px]="42">
+          <mat-checkbox
+            [formControlName]="controls.isMandatory"
+            (click)="$event.stopPropagation">
+            Ejecución obligatoria
+          </mat-checkbox>
+        </div>
+
+        <div fxFlex fxFlex.lt-md="100" fxLayoutAlign="space-between center"
+          [style.paddingTop.px]="10" [style.height.px]="42">
+          <mat-checkbox
+            [formControlName]="controls.isController"
+            (click)="$event.stopPropagation">
+            Controla fechas de otras obligaciones
+          </mat-checkbox>
+        </div>
+
+      </div>
+
+    </ng-container>
+
+
+    <div class="section-title"> Condiciones de ejecución y tiempo estimado </div>
+
+    <div fxLayout="row" fxLayout.lt-md="column">
+
+      <div [fxFlex]="100">
+        <label>Esta obligación debe hacerse:</label>
+
+        <div fxLayout="row">
+          <div [fxFlex]="20">
+            <input type="text" class="text-box text-align-right"
+              [formControlName]="controls.dueOnTerm">
+          </div>
+
+          <div [fxFlex]="30">
+            <emp-ng-select
+              [config]="{bindByValue: false}"
+              [formControlName]="controls.dueOnTermUnit"
+              [items]="[]">
+            </emp-ng-select>
+          </div>
+
+          <div [fxFlex]="50">
+            <emp-ng-select
+              [config]="{bindByValue: false}"
+              [formControlName]="controls.dueOnCondition"
+              [items]="[]">
+            </emp-ng-select>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div fxLayout="row">
+      <div fxFlex="100">
+        <emp-ng-select
+          [config]="{bindByValue: false}"
+          [formControlName]="controls.dueOnController"
+          [items]="[]">
+        </emp-ng-select>
+      </div>
+    </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="100">
+        <label>Duración estimada:</label>
+
+        <div fxLayout="row">
+          <div [fxFlex]="20">
+            <input type="text" class="text-box text-align-right"
+              [formControlName]="controls.duration">
+          </div>
+          <div [fxFlex]="30">
+            <emp-ng-select
+              [config]="{bindByValue: false}"
+              [formControlName]="controls.durationUnit"
+              [items]="[]">
+            </emp-ng-select>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="50">
+        <label>Prevencion:</label>
+
+        <div fxLayout="row">
+          <div [fxFlex]="40">
+            <input type="text" class="text-box text-align-right"
+              [formControlName]="controls.preventionTerm">
+          </div>
+          <div [fxFlex]="60">
+            <emp-ng-select
+              [config]="{bindByValue: false}"
+              [formControlName]="controls.preventionTermUnit"
+              [items]="[]">
+            </emp-ng-select>
+          </div>
+        </div>
+
+      </div>
+
+      <div [fxFlex]="50">
+        <label>Atención de requisitos:</label>
+
+        <div fxLayout="row">
+          <div [fxFlex]="40">
+            <input type="text" class="text-box text-align-right"
+              [formControlName]="controls.requirementsAttentionTerm">
+          </div>
+          <div [fxFlex]="60">
+            <emp-ng-select
+              [config]="{bindByValue: false}"
+              [formControlName]="controls.requirementsAttentionTermUnit"
+              [items]="[]">
+            </emp-ng-select>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div fxLayout="row">
+
+      <div [fxFlex]="50">
+        <label>Extensión de la prevención:</label>
+
+        <div fxLayout="row">
+          <div [fxFlex]="40">
+            <input type="text" class="text-box text-align-right"
+              [formControlName]="controls.preventionExtensionTerm">
+          </div>
+          <div [fxFlex]="60">
+            <emp-ng-select
+              [config]="{bindByValue: false}"
+              [formControlName]="controls.preventionExtensionTermUnit"
+              [items]="[]">
+            </emp-ng-select>
+          </div>
+        </div>
+
+      </div>
+
+      <div [fxFlex]="50">
+        <label>Extensión de atención de requisitos:</label>
+
+        <div fxLayout="row">
+          <div [fxFlex]="40">
+            <input type="text" class="text-box text-align-right"
+              [formControlName]="controls.requirementsAttentionExtensionTerm">
+          </div>
+          <div [fxFlex]="60">
+            <emp-ng-select
+              [config]="{bindByValue: false}"
+              [formControlName]="controls.requirementsAttentionExtensionTermUnit"
+              [items]="[]">
+            </emp-ng-select>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <ng-container *ngIf="showPeriodicityRule">
+      <div class="section-title"> Regla de periodicidad: </div>
+
+      <div fxLayout="row" fxLayout.lt-md="column">
+
+        <div [fxFlex]="20">
+          <label>Cada:</label>
+          <input type="text" class="text-box text-align-right"
+            [formControlName]="controls.periodicityRuleEachValue">
+        </div>
+
+        <div [fxFlex]="30" [style.marginTop.px]="11">
+          <emp-ng-select
+            [config]="{bindByValue: false}"
+            [formControlName]="controls.periodicityRuleEachUnit"
+            [items]="[]">
+          </emp-ng-select>
+        </div>
+
+        <div [fxFlex]="50">
+          <label>Vence:</label>
+          <emp-ng-select
+            [config]="{bindByValue: false}"
+            [formControlName]="controls.periodicityRuleDueOnType"
+            [items]="[]">
+          </emp-ng-select>
+        </div>
+
+      </div>
+
+      <div fxLayout="row" fxLayout.lt-md="column">
+
+        <div [fxFlex]="50">
+
+        </div>
+
+        <div [fxFlex]="20">
+          <label>Mes:</label>
+          <emp-ng-select
+            [config]="{bindByValue: false}"
+            [formControlName]="controls.periodicityRuleDueOnMonth"
+            [items]="[]">
+          </emp-ng-select>
+        </div>
+
+        <div [fxFlex]="30">
+          <label>Día:</label>
+          <input type="text" class="text-box text-align-right"
+            [formControlName]="controls.periodicityRuleDueOnDay">
+        </div>
+
+      </div>
+
+      <div fxLayout="row" fxLayout.lt-md="column">
+
+        <div [fxFlex]="100">
+          <label>Notas:</label>
+          <input type="text" class="text-box"
+            [formControlName]="controls.periodicityRuleNotes">
+        </div>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+  <mat-divider class="horizontal"></mat-divider>
+
+  <div #footerSeccion fxLayout="row">
+
+    <ng-container *ngIf="!isSaved">
+
+      <div fxFlex fxLayoutAlign="end center">
+
+        <button (click)="onSubmitForm()"
+          [class.btn]="!formHandler.isValid"
+          [class.btn-action]="formHandler.isValid">
+          Agregar
+        </button>
+
+      </div>
+
+    </ng-container>
+
+    <ng-container *ngIf="isSaved">
+
+      <!-- <div fxFlex fxLayoutAlign="start center" *ngIf="editionMode">
+
+        <button
+          type="button" class="btn-warning">
+          Eliminar
+        </button>
+
+      </div> -->
+
+      <div fxFlex fxLayoutAlign="end center">
+
+        <ng-container *ngIf="editionMode">
+
+          <button (click)="onSubmitForm()"
+            [class.btn]="!formHandler.isValid"
+            [class.btn-action]="formHandler.isValid">
+            Guardar
+          </button>
+
+          <button *ngIf="isObligationRuleDefault"
+            (click)="enableEditor(false)"
+            class="btn-base uppercase">
+            Descartar Cambios
+          </button>
+
+        </ng-container>
+
+        <ng-container *ngIf="!editionMode">
+
+          <button
+            class="btn-action"
+            (click)="onAddRuleClicked()">
+            Agregar regla adicional
+          </button>
+
+          <mat-divider vertical="true" class="vertical" [style.marginTop.px]="0"></mat-divider>
+
+          <button
+            class="btn-action"
+            (click)="enableEditor(true)">
+            Editar
+          </button>
+
+        </ng-container>
+
+      </div>
+
+    </ng-container>
+
+  </div>
+
+</form>

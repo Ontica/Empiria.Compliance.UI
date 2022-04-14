@@ -15,6 +15,9 @@ import { SharedModule } from '@app/shared/shared.module';
 
 import { ObligationEditorComponent } from './obligation-edition/obligation-editor.component';
 import { ObligationHeaderComponent } from './obligation-edition/obligation-header.component';
+import { ObligationRuleEditorComponent } from './obligation-rules-edition/obligation-rule-editor.component';
+import { ObligationRulesEditionComponent } from './obligation-rules-edition/obligation-rules-edition.component';
+import { ObligationRulesTableComponent } from './obligation-rules-edition/obligation-rules-table.component';
 import { ObligationsControlsComponent } from './obligations-explorer/obligations-controls.component';
 import { ObligationsExplorerComponent } from './obligations-explorer/obligations-explorer.component';
 import { ObligationsFilterComponent } from './obligations-explorer/obligations-filter.component';
@@ -35,6 +38,9 @@ import { ObligationTabbedViewComponent } from './obligation-tabbed-view/obligati
   declarations: [
     ObligationEditorComponent,
     ObligationHeaderComponent,
+    ObligationRuleEditorComponent,
+    ObligationRulesEditionComponent,
+    ObligationRulesTableComponent,
     ObligationsControlsComponent,
     ObligationsExplorerComponent,
     ObligationsFilterComponent,

@@ -147,8 +147,8 @@ $select-font-size-xsmall: 9.5pt;
 // grid
 //
 $grid-header-background-color: $secondary-color-light !default;
-$grid-header-color: $primary-color !default;
-$grid-header-border-bottom: 2pt solid $title-color;
+$grid-header-color: $primary-color-dark !default;
+$grid-header-border-bottom: 2px solid $grid-header-color;
 $grid-header-font-size: $font-size-base * 0.7;
 $grid-font-size: 9pt;
 $grid-border: 0;
