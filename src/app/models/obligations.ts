@@ -52,9 +52,10 @@ export interface ObligationRule {
   executionMode: string;
   isMandatory: boolean;
   isController: boolean;
-  duration: number;
-  durationUnit: string;
+  workflowModel: Identifiable;
   context: string[];
+  whenStartsAskFor: Identifiable[];
+  whenEndsAskFor: Identifiable[];
   dueOn: {
     term: number;
     termUnit: string;
@@ -68,7 +69,7 @@ export interface ObligationRule {
     extensionTerm: number;
     extensionTermUnit: string;
   },
-  requirementsAttention: {
+  preventionAttention: {
     term: number;
     termUnit: string;
     extensionTerm: number;
@@ -101,12 +102,13 @@ export const EmptyProcedure: Procedure = {
 export const EmptyObligationRule: ObligationRule = {
   uid: '',
   isDefault: false,
+  workflowModel: Empty,
   executionMode: '',
   isMandatory: false,
   isController: false,
-  duration: 0,
-  durationUnit: '',
   context: [],
+  whenStartsAskFor: [],
+  whenEndsAskFor: [],
   dueOn: {
     term:  0,
     termUnit:  '',
@@ -120,7 +122,7 @@ export const EmptyObligationRule: ObligationRule = {
     extensionTerm: 0,
     extensionTermUnit:  '',
   },
-  requirementsAttention: {
+  preventionAttention: {
     term: 0,
     termUnit:  '',
     extensionTerm: 0,

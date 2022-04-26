@@ -2,24 +2,32 @@
     [hint]="hintText"
     (cardClose)="onCloseClicked()">
 
-    <mat-tab-group >
+    <mat-tab-group>
 
       <mat-tab label="Obligación">
 
-        <emp-com-obligation-editor
-          [obligation]="obligation"
-          (oligationEditorEvent)="onOligationEditorEvent($event)">
+        <ng-template matTabContent>
 
-        </emp-com-obligation-editor>
+          <emp-com-obligation-editor
+            [obligation]="obligation"
+            (oligationEditorEvent)="onOligationEditorEvent($event)">
+
+          </emp-com-obligation-editor>
+
+         </ng-template>
 
       </mat-tab>
 
       <mat-tab label="Reglas">
 
-        <emp-com-obligation-rules-edition
-          [obligationRuleList]="obligation.rules ?? []">
+         <ng-template matTabContent>
 
-        </emp-com-obligation-rules-edition>
+          <emp-com-obligation-rules-edition
+            [obligationRuleList]="obligation.rules ?? []">
+
+          </emp-com-obligation-rules-edition>
+
+         </ng-template>
 
       </mat-tab>
 

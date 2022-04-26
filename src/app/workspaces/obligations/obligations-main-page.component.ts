@@ -62,7 +62,7 @@ export class ObligationsMainPageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.suscribeToAction();
-    this.searchObligation(this.obligationsCommand);
+    this.searchObligations(this.obligationsCommand);
   }
 
 
@@ -77,7 +77,7 @@ export class ObligationsMainPageComponent implements OnInit, OnDestroy {
       case ObligationsExplorerEventType.SEARCH_OBLIGATIONS:
         Assertion.assertValue(event.payload.command, 'event.payload.command');
         this.obligationsCommand = Object.assign({}, event.payload.command);
-        this.searchObligation(event.payload.command as ObligationCommand);
+        this.searchObligations(event.payload.command as ObligationCommand);
         return;
 
       case ObligationsExplorerEventType.EXPORT_OBLIGATIONS:
@@ -133,7 +133,7 @@ export class ObligationsMainPageComponent implements OnInit, OnDestroy {
   }
 
 
-  private searchObligation(command: ObligationCommand) {
+  private searchObligations(command: ObligationCommand) {
     this.resetObligationsList();
     this.setLoading(true);
 

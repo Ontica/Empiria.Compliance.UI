@@ -10,6 +10,15 @@
       <div fxLayout="row" fxLayout.lt-md="column">
 
         <div [fxFlex]="20" fxFlex.lt-md="100">
+          <label>Modelo de flujo de trabajo:</label>
+          <emp-ng-select [style.width.%]="100"
+            [config]="{bindByValue: false}"
+            [formControlName]="controls.workflowModel"
+            [items]="[]">
+          </emp-ng-select>
+        </div>
+
+        <div [fxFlex]="30" fxFlex.lt-md="100">
           <label>Modo de ejecución:</label>
           <emp-ng-select [style.width.%]="100"
             [config]="{bindByValue: false}"
@@ -18,7 +27,7 @@
           </emp-ng-select>
         </div>
 
-        <div [fxFlex]="30" fxFlex.lt-md="100" fxLayoutAlign="space-between center"
+        <div [fxFlex]="20" fxFlex.lt-md="100" fxLayoutAlign="space-between center"
           [style.paddingTop.px]="10" [style.height.px]="42">
           <mat-checkbox
             [formControlName]="controls.isMandatory"
@@ -42,6 +51,20 @@
 
 
     <div class="section-title"> Condiciones de ejecución y tiempo estimado </div>
+
+    <div fxLayout="row" fxLayout.lt-md="column" *ngIf="!isObligationRuleDefault">
+
+      <div [fxFlex]="100">
+        <label>Contexto:</label>
+
+        <emp-ng-select
+          [config]="{bindByValue: false, multiple: true}"
+          [formControlName]="controls.context"
+          [items]="[]">
+        </emp-ng-select>
+      </div>
+
+    </div>
 
     <div fxLayout="row" fxLayout.lt-md="column">
 
@@ -88,31 +111,8 @@
 
     <div fxLayout="row">
 
-      <div [fxFlex]="100">
-        <label>Duración estimada:</label>
-
-        <div fxLayout="row">
-          <div [fxFlex]="20">
-            <input type="text" class="text-box text-align-right"
-              [formControlName]="controls.duration">
-          </div>
-          <div [fxFlex]="30">
-            <emp-ng-select
-              [config]="{bindByValue: false}"
-              [formControlName]="controls.durationUnit"
-              [items]="[]">
-            </emp-ng-select>
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-    <div fxLayout="row">
-
       <div [fxFlex]="50">
-        <label>Prevencion:</label>
+        <label>Prevención:</label>
 
         <div fxLayout="row">
           <div [fxFlex]="40">
@@ -131,17 +131,17 @@
       </div>
 
       <div [fxFlex]="50">
-        <label>Atención de requisitos:</label>
+        <label>Atención de la prevención:</label>
 
         <div fxLayout="row">
           <div [fxFlex]="40">
             <input type="text" class="text-box text-align-right"
-              [formControlName]="controls.requirementsAttentionTerm">
+              [formControlName]="controls.preventionAttentionTerm">
           </div>
           <div [fxFlex]="60">
             <emp-ng-select
               [config]="{bindByValue: false}"
-              [formControlName]="controls.requirementsAttentionTermUnit"
+              [formControlName]="controls.preventionAttentionTermUnit"
               [items]="[]">
             </emp-ng-select>
           </div>
@@ -173,17 +173,17 @@
       </div>
 
       <div [fxFlex]="50">
-        <label>Extensión de atención de requisitos:</label>
+        <label>Extensión de atención de la prevención:</label>
 
         <div fxLayout="row">
           <div [fxFlex]="40">
             <input type="text" class="text-box text-align-right"
-              [formControlName]="controls.requirementsAttentionExtensionTerm">
+              [formControlName]="controls.preventionAttentionExtensionTerm">
           </div>
           <div [fxFlex]="60">
             <emp-ng-select
               [config]="{bindByValue: false}"
-              [formControlName]="controls.requirementsAttentionExtensionTermUnit"
+              [formControlName]="controls.preventionAttentionExtensionTermUnit"
               [items]="[]">
             </emp-ng-select>
           </div>
@@ -257,6 +257,32 @@
       </div>
 
     </ng-container>
+
+
+    <div fxLayout="row" *ngIf="isObligationRuleDefault">
+
+      <div [fxFlex]="50">
+        <label>Cuando la obligación empieza preguntar por:</label>
+        <emp-ng-select
+          [config]="{multiple: true, bindByValue: false}"
+          [formControlName]="controls.whenStartsAskFor"
+          [items]="[]"
+          [bindLabel]="null"
+          [showError]="formHandler.showInvalidControl(controls.whenStartsAskFor)">
+        </emp-ng-select>
+      </div>
+
+      <div [fxFlex]="50">
+        <label>Cuando la obligación termina preguntar por:</label>
+        <emp-ng-select
+          [config]="{multiple: true, bindByValue: false}"
+          [formControlName]="controls.whenEndsAskFor"
+          [items]="[]"
+          [showError]="formHandler.showInvalidControl(controls.whenEndsAskFor)">
+        </emp-ng-select>
+      </div>
+
+    </div>
 
   </div>
 

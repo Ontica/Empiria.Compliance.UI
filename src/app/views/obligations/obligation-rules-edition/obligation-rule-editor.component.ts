@@ -22,28 +22,25 @@ export enum ObligationRuleEditorEventType {
 }
 
 enum ObligationRuleEditorFormControls {
+  workflowModel = 'workflowModel',
   executionMode = 'executionMode',
   isMandatory = 'isMandatory',
   isController = 'isController',
-
+  context = 'context',
+  whenStartsAskFor = 'whenStartsAskFor',
+  whenEndsAskFor = 'whenEndsAskFor',
   dueOnTerm = 'dueOnTerm',
   dueOnTermUnit = 'dueOnTermUnit',
   dueOnCondition = 'dueOnCondition',
   dueOnController = 'dueOnController',
-
-  duration = 'duration',
-  durationUnit = 'durationUnit',
-
   preventionTerm = 'preventionTerm',
   preventionTermUnit = 'preventionTermUnit',
   preventionExtensionTerm = 'preventionExtensionTerm',
   preventionExtensionTermUnit = 'preventionExtensionTermUnit',
-
-  requirementsAttentionTerm = 'requirementsAttentionTerm',
-  requirementsAttentionTermUnit = 'requirementsAttentionTermUnit',
-  requirementsAttentionExtensionTerm = 'requirementsAttentionExtensionTerm',
-  requirementsAttentionExtensionTermUnit = 'requirementsAttentionExtensionTermUnit',
-
+  preventionAttentionTerm = 'preventionAttentionTerm',
+  preventionAttentionTermUnit = 'preventionAttentionTermUnit',
+  preventionAttentionExtensionTerm = 'preventionAttentionExtensionTerm',
+  preventionAttentionExtensionTermUnit = 'preventionAttentionExtensionTermUnit',
   periodicityRuleEachValue = 'periodicityRuleEachValue',
   periodicityRuleEachUnit = 'periodicityRuleEachUnit',
   periodicityRuleDueOnType = 'periodicityRuleDueOnType',
@@ -111,7 +108,7 @@ export class ObligationRuleEditorComponent implements OnChanges {
       return;
     }
 
-    const eventType = this.editionMode ?
+    const eventType = this.isSaved ?
       ObligationRuleEditorEventType.UPDATE_OBLIGATION_RULE :
       ObligationRuleEditorEventType.CREATE_OBLIGATION_RULE;
 
@@ -142,29 +139,31 @@ export class ObligationRuleEditorComponent implements OnChanges {
 
     this.formHandler = new FormHandler(
       new FormGroup({
-        executionMode: new FormControl(''),
+        workflowModel: new FormControl(),
+        executionMode: new FormControl(),
         isMandatory: new FormControl(false),
         isController: new FormControl(false),
-        dueOnTerm: new FormControl(''),
-        dueOnTermUnit: new FormControl(''),
-        dueOnCondition: new FormControl(''),
-        dueOnController: new FormControl(''),
-        duration: new FormControl(''),
-        durationUnit: new FormControl(''),
-        preventionTerm: new FormControl(''),
-        preventionTermUnit: new FormControl(''),
-        preventionExtensionTerm: new FormControl(''),
-        preventionExtensionTermUnit: new FormControl(''),
-        requirementsAttentionTerm: new FormControl(''),
-        requirementsAttentionTermUnit: new FormControl(''),
-        requirementsAttentionExtensionTerm: new FormControl(''),
-        requirementsAttentionExtensionTermUnit: new FormControl(''),
-        periodicityRuleEachValue: new FormControl(''),
-        periodicityRuleEachUnit: new FormControl(''),
-        periodicityRuleDueOnType: new FormControl(''),
-        periodicityRuleDueOnMonth: new FormControl(''),
-        periodicityRuleDueOnDay: new FormControl(''),
-        periodicityRuleNotes: new FormControl(''),
+        context: new FormControl(),
+        whenStartsAskFor: new FormControl(),
+        whenEndsAskFor: new FormControl(),
+        dueOnTerm: new FormControl(),
+        dueOnTermUnit: new FormControl(),
+        dueOnCondition: new FormControl(),
+        dueOnController: new FormControl(),
+        preventionTerm: new FormControl(),
+        preventionTermUnit: new FormControl(),
+        preventionExtensionTerm: new FormControl(),
+        preventionExtensionTermUnit: new FormControl(),
+        preventionAttentionTerm: new FormControl(),
+        preventionAttentionTermUnit: new FormControl(),
+        preventionAttentionExtensionTerm: new FormControl(),
+        preventionAttentionExtensionTermUnit: new FormControl(),
+        periodicityRuleEachValue: new FormControl(),
+        periodicityRuleEachUnit: new FormControl(),
+        periodicityRuleDueOnType: new FormControl(),
+        periodicityRuleDueOnMonth: new FormControl(),
+        periodicityRuleDueOnDay: new FormControl(),
+        periodicityRuleNotes: new FormControl(),
       })
     );
   }
@@ -172,23 +171,25 @@ export class ObligationRuleEditorComponent implements OnChanges {
 
   private setFormData(obligationRule: ObligationRule) {
     this.formHandler.form.reset({
+      workflowModel: obligationRule.workflowModel || '',
       executionMode: obligationRule.executionMode || '',
       isMandatory: obligationRule.isMandatory,
       isController: obligationRule.isController,
+      context: obligationRule.context,
+      whenStartsAskFor: obligationRule.whenStartsAskFor.map(x => x.name),
+      whenEndsAskFor: obligationRule.whenEndsAskFor.map(x => x.name),
       dueOnTerm: obligationRule.dueOn.term,
       dueOnTermUnit: obligationRule.dueOn.termUnit,
       dueOnCondition: obligationRule.dueOn.condition,
-      dueOnController: obligationRule.dueOn.controllerName, // obligationRule.dueOn.controllerUID,
-      duration: obligationRule.duration,
-      durationUnit: obligationRule.durationUnit,
+      dueOnController: obligationRule.dueOn.controllerName,
       preventionTerm: obligationRule.prevention.term,
       preventionTermUnit: obligationRule.prevention.termUnit,
       preventionExtensionTerm: obligationRule.prevention.extensionTerm,
       preventionExtensionTermUnit: obligationRule.prevention.extensionTermUnit,
-      requirementsAttentionTerm: obligationRule.requirementsAttention.term,
-      requirementsAttentionTermUnit: obligationRule.requirementsAttention.termUnit,
-      requirementsAttentionExtensionTerm: obligationRule.requirementsAttention.extensionTerm,
-      requirementsAttentionExtensionTermUnit: obligationRule.requirementsAttention.extensionTermUnit,
+      preventionAttentionTerm: obligationRule.preventionAttention.term,
+      preventionAttentionTermUnit: obligationRule.preventionAttention.termUnit,
+      preventionAttentionExtensionTerm: obligationRule.preventionAttention.extensionTerm,
+      preventionAttentionExtensionTermUnit: obligationRule.preventionAttention.extensionTermUnit,
       periodicityRuleEachValue: obligationRule.periodicityRule.each.value,
       periodicityRuleEachUnit: obligationRule.periodicityRule.each.unit,
       periodicityRuleDueOnType: obligationRule.periodicityRule.dueOn.type,
@@ -206,23 +207,25 @@ export class ObligationRuleEditorComponent implements OnChanges {
     const formModel = this.formHandler.form.getRawValue();
 
     const data: any = {
+      workflowModel: formModel.workflowModel,
       executionMode: formModel.executionMode,
       isMandatory: formModel.isMandatory,
       isController: formModel.isController,
+      context: formModel.context,
+      whenStartsAskFor: formModel.whenStartsAskFor,
+      whenEndsAskFor: formModel.whenEndsAskFor,
       dueOnTerm: formModel.dueOnTerm,
       dueOnTermUnit: formModel.dueOnTermUnit,
       dueOnCondition: formModel.dueOnCondition,
       dueOnController: formModel.dueOnController,
-      duration: formModel.duration,
-      durationUnit: formModel.durationUnit,
       preventionTerm: formModel.preventionTerm,
       preventionTermUnit: formModel.preventionTermUnit,
       preventionExtensionTerm: formModel.preventionExtensionTerm,
       preventionExtensionTermUnit: formModel.preventionExtensionTermUnit,
-      requirementsAttentionTerm: formModel.requirementsAttentionTerm,
-      requirementsAttentionTermUnit: formModel.requirementsAttentionTermUnit,
-      requirementsAttentionExtensionTerm: formModel.requirementsAttentionExtensionTerm,
-      requirementsAttentionExtensionTermUnit: formModel.requirementsAttentionExtensionTermUnit,
+      preventionAttentionTerm: formModel.preventionAttentionTerm,
+      preventionAttentionTermUnit: formModel.preventionAttentionTermUnit,
+      preventionAttentionExtensionTerm: formModel.preventionAttentionExtensionTerm,
+      preventionAttentionExtensionTermUnit: formModel.preventionAttentionExtensionTermUnit,
       periodicityRuleEachValue: formModel.periodicityRuleEachValue,
       periodicityRuleEachUnit: formModel.periodicityRuleEachUnit,
       periodicityRuleDueOnType: formModel.periodicityRuleDueOnType,
