@@ -54,6 +54,7 @@ export class AuthenticationService {
     const principal = this.session.getPrincipal();
 
     if (!principal.isAuthenticated) {
+      this.session.clearSession();
       return Promise.resolve(false);
     }
 
@@ -72,8 +73,6 @@ export class AuthenticationService {
 
     const principal = new Principal(sessionToken,
                                     principalData.identity,
-                                    principalData.claims,
-                                    principalData.roles,
                                     principalData.permissions,
                                     defaultRoute);
     this.session.setPrincipal(principal);
@@ -102,7 +101,7 @@ export class AuthenticationService {
       return UNAUTHORIZED_ROUTE;
     }
 
-    for (let route of ROUTES_LIST) {
+    for (const route of ROUTES_LIST) {
       if (route.permission === routesValid[0]) {
         return route.parent + '/' + route.path;
       }

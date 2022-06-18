@@ -17,7 +17,7 @@ import { Principal } from '../security/principal';
 
 import { KeyValue } from '../data-types/key-value';
 
-import { Claim, Identity, SessionToken } from '../security/security-types';
+import { Identity, SessionToken } from '../security/security-types';
 
 import { LocalStorageService } from './local-storage.service';
 
@@ -28,11 +28,12 @@ import { ROUTES_LIST } from '@app/main-layout';
 export class SessionService {
 
   private principal: Principal = Principal.empty;
+
   private data: KeyValue[] = [];
 
   constructor(private appSettingsService: ApplicationSettingsService,
               private localStorage: LocalStorageService) {
-    this.setPrincipalFromLocalStorage();
+    this.tryToRetrieveStoredPrincipalData();
   }
 
 
@@ -96,6 +97,7 @@ export class SessionService {
     }
   }
 
+
   hasPermission(permission: string): boolean {
     return this.principal.permissions &&
       this.principal.permissions.filter(x =>  x === permission).length > 0;
@@ -115,17 +117,30 @@ export class SessionService {
   }
 
 
+  private tryToRetrieveStoredPrincipalData() {
+    try {
+      this.setPrincipalFromLocalStorage();
+    } catch (e) {
+      this.clearSession();
+      console.log(e);
+    }
+  }
+
+
   private setPrincipalFromLocalStorage() {
     const sessionToken = this.getSessionToken();
+    Assertion.assertValue(sessionToken.accessToken, 'sessionToken.accessToken');
 
     if (!!sessionToken && !!sessionToken.accessToken) {
-      const identity =  this.localStorage.get<Identity>('identity');
-      const claims = this.localStorage.get<Claim[]>('claims');
-      const roles = this.localStorage.get<string[]>('roles');
-      const permissions = this.localStorage.get<string[]>('permissions');
-      const defaultRoute = this.localStorage.get<string>('defaultRoute');
+      const identity =  this.localStorage.get<Identity>('identity') ?? null;
+      const permissions = this.localStorage.get<string[]>('permissions') ?? null;
+      const defaultRoute = this.localStorage.get<string>('defaultRoute') ?? null;
 
-      this.principal = new Principal(sessionToken, identity, claims, roles, permissions, defaultRoute);
+      Assertion.assert(typeof identity.name === 'string', 'corrupted identity, must be a string.');
+      Assertion.assert(permissions instanceof Array, 'corrupted permissions, must be an array of strings.');
+      Assertion.assert(typeof defaultRoute === 'string', 'corrupted defaultRoute, must be a string.');
+
+      this.principal = new Principal(sessionToken, identity, permissions, defaultRoute);
     }
   }
 
@@ -134,8 +149,6 @@ export class SessionService {
     this.localStorage.set<SessionToken>('sessionToken', this.principal.sessionToken);
     this.localStorage.set<Identity>('identity', this.principal.identity);
     this.localStorage.set<string[]>('permissions', this.principal.permissions);
-    this.localStorage.set<string[]>('roles', this.principal.roles);
-    this.localStorage.set<Claim[]>('claims', this.principal.claims);
     this.localStorage.set<string>('defaultRoute', this.principal.defaultRoute);
   }
 
