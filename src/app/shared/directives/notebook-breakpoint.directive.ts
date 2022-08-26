@@ -14,6 +14,6 @@ const selector = `[fxHide.notebook]`;
 const inputs = ['fxHide.notebook'];
 
 @Directive({selector, inputs})
-export class BreakpointDirective extends ShowHideDirective {
+export class EmpBreakpointDirective extends ShowHideDirective {
   protected inputs = inputs;
 }

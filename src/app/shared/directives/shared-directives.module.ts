@@ -7,14 +7,18 @@
 
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
+import { EmpBreakpointDirective } from './notebook-breakpoint.directive';
+import { EmpContextMenuDisabledDirective } from './context-menu-disabled.directive';
 import { EmpCurrencyDirective } from './currency.directive';
+import { EmpFormKeyDownEnterDirective } from './form-keydown-enter.directive';
+import { EmpHasPermissionDirective } from './has-permission.directive';
 import { EmpIntegerDirective } from './integer.directive';
 import { EmpNumerationDirective } from './numeration.directive';
+import { EmpResizableDirective } from './resizable.directive';
 import { EmpTextareaAutoresizeDirective } from './text-area-autoresize.directive';
-import { HasPermissionDirective } from './has-permission.directive';
-import { ResizableDirective } from './resizable.directive';
-import { BreakpointDirective } from './notebook-breakpoint.directive';
-import { NotebookBreakPointsProvider } from './notebook-breakpoint';
+
+import { EmpNotebookBreakPointsProvider } from './notebook-breakpoint';
 
 
 @NgModule({
@@ -24,27 +28,31 @@ import { NotebookBreakPointsProvider } from './notebook-breakpoint';
   ],
 
   declarations: [
-    BreakpointDirective,
+    EmpBreakpointDirective,
+    EmpContextMenuDisabledDirective,
     EmpCurrencyDirective,
+    EmpFormKeyDownEnterDirective,
+    EmpHasPermissionDirective,
     EmpIntegerDirective,
     EmpNumerationDirective,
+    EmpResizableDirective,
     EmpTextareaAutoresizeDirective,
-    HasPermissionDirective,
-    ResizableDirective,
   ],
 
   exports: [
-    BreakpointDirective,
+    EmpBreakpointDirective,
+    EmpContextMenuDisabledDirective,
     EmpCurrencyDirective,
+    EmpFormKeyDownEnterDirective,
+    EmpHasPermissionDirective,
     EmpIntegerDirective,
     EmpNumerationDirective,
+    EmpResizableDirective,
     EmpTextareaAutoresizeDirective,
-    HasPermissionDirective,
-    ResizableDirective,
   ],
 
   providers: [
-    NotebookBreakPointsProvider,
+    EmpNotebookBreakPointsProvider,
   ],
 
 })
